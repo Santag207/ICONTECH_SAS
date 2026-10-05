@@ -27,8 +27,8 @@
 <header class="nav" id="nav">
   <div class="wrap nav__in">
     <a href="#inicio" class="logo" aria-label="INCONTECH S.A.S. inicio">
-      <!-- Reemplazar por el logo oficial: <img src="img/logo.svg" alt="INCONTECH S.A.S."> -->
-      <span class="logo__mark">IN</span><span class="logo__txt">INCONTECH<small>S.A.S.</small></span>
+      <img src="img/real/logo.png" alt="Logo INCONTECH S.A.S." class="logo__img">
+      <span class="logo__txt">INCONTECH<small>S.A.S.</small></span>
     </a>
     <nav aria-label="Principal" class="menu" id="menu">
       <a href="#inicio">Inicio</a>
@@ -88,21 +88,48 @@
 <!-- NOSOTROS -->
 <section class="sec" id="nosotros">
   <div class="wrap split reveal">
-    <div class="ph" role="img" aria-label="Espacio para fotografía del personal técnico"><span>Personal técnico en laboratorio<br>img/nosotros.webp</span></div>
+    <div class="img-frame img-frame--interactive">
+      <img src="img/real/certificacion.jpg" alt="Acreditación y Certificación de Calidad INCONTECH S.A.S." loading="lazy" class="zoom-img">
+      <div class="img-frame__badge">Acreditación y Calidad Certificada</div>
+    </div>
     <div>
       <p class="eyebrow">Quiénes somos</p>
       <h2>Ingeniería respaldada por calidad y compromiso.</h2>
-      <p>INCONTECH S.A.S. desarrolla servicios especializados de laboratorio, estudios y consultoría para proyectos de ingeniería civil. Nuestro trabajo integra conocimiento técnico, control de calidad y procedimientos orientados a entregar información confiable para la toma de decisiones.</p>
-      <p>Desde la caracterización de materiales hasta los estudios de campo y la consultoría especializada, acompañamos diferentes etapas de los proyectos con una visión técnica, responsable y orientada a resultados.</p>
-      <a href="#calidad" class="btn btn--o">Conoce INCONTECH</a>
+      <p>INCONTECH S.A.S. es una empresa dedicada al <strong>Laboratorio de Suelos, Concretos y Pavimentos</strong>, creada bajo el lema <em>"Haciendo la diferencia con excelencia"</em> con el objetivo de garantizar los más altos niveles de calidad e innovación en servicios de ingeniería civil.</p>
+      <p>Nuestros procesos cumplen rigurosamente con la normativa vigente y se encuentran respaldados por un sistema de gestión de calidad, con equipos calibrados ante entidades acreditadas por ONAC.</p>
+      <a href="#calidad" class="btn btn--o">Conoce nuestro Sistema de Calidad</a>
       <p class="sign"><span class="sign__line"></span>Haciendo la diferencia con excelencia</p>
     </div>
   </div>
   <div class="wrap values reveal">
-    <div><h3>Calidad</h3><p>Procesos orientados a resultados confiables.</p></div>
-    <div><h3>Innovación</h3><p>Aplicación de herramientas y metodologías para mejorar nuestros servicios.</p></div>
-    <div><h3>Compromiso</h3><p>Acompañamiento responsable durante cada proyecto.</p></div>
-    <div><h3>Mejora continua</h3><p>Evaluación permanente de nuestros procesos.</p></div>
+    <div class="value-card">
+      <div class="value-card__icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <h3>Calidad Certificada</h3>
+      <p>Procesos bajo norma estricta y equipos con calibración ONAC.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-card__icon">
+        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      </div>
+      <h3>Innovación</h3>
+      <p>Equipos modernos y metodologías ágiles de laboratorio y geofísica.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-card__icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Compromiso</h3>
+      <p>Acompañamiento directo y asesorías técnicas durante todo el proyecto.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-card__icon">
+        <svg viewBox="0 0 24 24"><path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+      </div>
+      <h3>Mejora Continua</h3>
+      <p>Auditorías y revisión permanente de nuestros métodos y ensayos.</p>
+    </div>
   </div>
 </section>
 
@@ -180,10 +207,19 @@
     <div>
       <p class="eyebrow">Patología estructural</p>
       <h2>Antes de intervenir, hay que entender.</h2>
-      <p>Nuestros estudios patológicos y ensayos permiten obtener información sobre las condiciones de elementos estructurales y apoyar la evaluación técnica de una estructura.</p>
-      <ul class="panel"><li>Extracción de núcleos</li><li>Esclerometría</li><li>Determinación de refuerzo</li><li>Carbonatación</li><li>Regatas</li></ul>
+      <p>Nuestros estudios patológicos y ensayos en sitio y laboratorio permiten evaluar con certeza la integridad, capacidad y durabilidad de elementos estructurales de concreto y mampostería.</p>
+      <ul class="panel">
+        <li><strong>Extracción de núcleos de concreto</strong> (resistencia a compresión en laboratorio)</li>
+        <li><strong>Esclerometría y dureza superficial</strong></li>
+        <li><strong>Localización y dectección de acero de refuerzo</strong> (Pacometría)</li>
+        <li><strong>Profundidad de carbonatación</strong> y ensayos químicos</li>
+        <li><strong>Regatas y auscultación destructiva/no destructiva</strong></li>
+      </ul>
     </div>
-    <div class="ph" role="img" aria-label="Espacio para fotografía de elemento estructural"><span>Elemento estructural real<br>img/patologia.webp</span></div>
+    <div class="img-frame img-frame--interactive">
+      <img src="img/real/lab-concretos.jpg" alt="Extracción de núcleos y ensayos de resistencia en laboratorio de concreto INCONTECH" loading="lazy" class="zoom-img">
+      <div class="img-frame__badge">Especialistas en Inspección y Diagnóstico</div>
+    </div>
   </div>
 </section>
 
