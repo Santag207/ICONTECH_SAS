@@ -266,6 +266,26 @@ document.addEventListener('mouseout', e => {
   }
 });
 
+/* ---- CTA Banner Free-Text WhatsApp Handler ---- */
+const ctaSendWaBtn = $('#ctaSendWaBtn');
+if (ctaSendWaBtn) {
+  ctaSendWaBtn.addEventListener('click', () => {
+    const freeText = $('#ctaFreeText')?.value.trim() || '';
+    const msg = freeText ?
+`*CONSULTA DIRECTA - INCONTECH S.A.S.*
+------------------------------------------------
+${freeText}
+
+------------------------------------------------
+Mensaje enviado desde incontechsas.com` :
+`*CONSULTA DIRECTA - INCONTECH S.A.S.*
+Hola, quisiera solicitar información y asesoría sobre sus servicios.`;
+
+    const url = `https://wa.me/573212718824?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+  });
+}
+
 /* ---- Quote Modal & WhatsApp Submission Handler ---- */
 const quoteModal = $('#quoteModal');
 const closeQuoteModalBtn = $('#closeQuoteModalBtn');
@@ -318,20 +338,20 @@ if (modalQuoteForm) {
     const mensaje = $('#m-mensaje')?.value.trim() || '';
 
     const text =
-`*NUEVA SOLICITUD DE COTIZACIÓN - INCONTECH S.A.S.*
+`*SOLICITUD DE COTIZACION - INCONTECH S.A.S.*
 ------------------------------------------------
-👤 *Nombre:* ${nombre}
-🏢 *Empresa:* ${empresa}
-📧 *Correo:* ${email}
-📱 *Teléfono:* ${telefono}
-📍 *Ubicación del Proyecto:* ${ciudad}
-🛠️ *Servicio Requerido:* ${servicio}
+* Nombre: ${nombre}
+* Empresa: ${empresa}
+* Correo: ${email}
+* Telefono: ${telefono}
+* Ubicacion del Proyecto: ${ciudad}
+* Servicio Requerido: ${servicio}
 
-📝 *Descripción / Requerimiento:*
+* Descripcion / Requerimiento:
 ${mensaje}
 
 ------------------------------------------------
-_Mensaje generado automáticamente desde incontechsas.com_`;
+Mensaje enviado desde incontechsas.com`;
 
     const waUrl = `https://wa.me/573212718824?text=${encodeURIComponent(text)}`;
     window.open(waUrl, '_blank', 'noopener,noreferrer');
