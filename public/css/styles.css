@@ -1221,34 +1221,54 @@ h4 { font-size: 18px; font-weight: 700; }
   font-size: 18px;
   max-width: 50ch;
 }
-.cta-banner__free-box {
+.cta-banner__quick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
   margin-top: 24px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: var(--radius-md);
-  padding: 20px;
+  margin-bottom: 24px;
 }
-.cta-banner__textarea {
-  width: 100%;
-  font-family: var(--font-main);
-  font-size: 15px;
-  padding: 12px 16px;
-  border-radius: var(--radius-sm);
+
+.cta-quick-btn {
+  background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  background: var(--bg-white);
-  color: var(--c-ink);
-  resize: vertical;
-  margin-bottom: 16px;
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-main);
+  text-align: left;
 }
-.cta-banner__textarea:focus {
-  outline: none;
-  border-color: var(--c-gold);
-  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+.cta-quick-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: #22C55E;
+  stroke-width: 2;
+  flex: none;
 }
-.cta-banner__actions {
+.cta-quick-btn span {
+  font-size: 14.5px;
+  font-weight: 700;
+}
+.cta-quick-btn:hover {
+  background: #25D366;
+  border-color: #25D366;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+}
+.cta-quick-btn:hover svg {
+  stroke: #FFFFFF;
+}
+
+.cta-banner__footer-actions {
   display: flex;
   gap: 16px;
-  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 16px;
 }
 
 /* CORPORATE FORM CEMEX STYLE */

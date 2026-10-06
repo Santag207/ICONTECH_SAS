@@ -266,25 +266,23 @@ document.addEventListener('mouseout', e => {
   }
 });
 
-/* ---- CTA Banner Free-Text WhatsApp Handler ---- */
-const ctaSendWaBtn = $('#ctaSendWaBtn');
-if (ctaSendWaBtn) {
-  ctaSendWaBtn.addEventListener('click', () => {
-    const freeText = $('#ctaFreeText')?.value.trim() || '';
-    const msg = freeText ?
-`*CONSULTA DIRECTA - INCONTECH S.A.S.*
+/* ---- CTA Banner Quick 1-Click WhatsApp Handler ---- */
+document.addEventListener('click', e => {
+  const quickBtn = e.target.closest('.cta-quick-btn');
+  if (quickBtn) {
+    const rawMsg = quickBtn.dataset.msg || 'Hola, quisiera solicitar información y cotización sobre sus servicios.';
+    const formattedText =
+`*SOLICITUD RAPIDA - INCONTECH S.A.S.*
 ------------------------------------------------
-${freeText}
+${rawMsg}
 
 ------------------------------------------------
-Mensaje enviado desde incontechsas.com` :
-`*CONSULTA DIRECTA - INCONTECH S.A.S.*
-Hola, quisiera solicitar información y asesoría sobre sus servicios.`;
+Mensaje enviado desde incontechsas.com`;
 
-    const url = `https://wa.me/573212718824?text=${encodeURIComponent(msg)}`;
+    const url = `https://wa.me/573212718824?text=${encodeURIComponent(formattedText)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
-  });
-}
+  }
+});
 
 /* ---- Quote Modal & WhatsApp Submission Handler ---- */
 const quoteModal = $('#quoteModal');
