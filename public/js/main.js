@@ -2,6 +2,31 @@
 'use strict';
 const $ = (s, c = document) => c.querySelector(s), $$ = (s, c = document) => [...c.querySelectorAll(s)];
 
+/* ---- Dark / Light Theme Mode Switcher ---- */
+const themeToggleBtn = $('#themeToggleBtn');
+const themeToggleText = $('.theme-toggle__text', themeToggleBtn);
+
+function applyTheme(isDark) {
+  document.body.classList.toggle('dark-mode', isDark);
+  if (themeToggleText) {
+    themeToggleText.textContent = isDark ? 'Modo Claro' : 'Modo Oscuro';
+  }
+}
+
+const savedTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const initialDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+
+applyTheme(initialDark);
+
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener('click', () => {
+    const isDark = !document.body.classList.contains('dark-mode');
+    applyTheme(isDark);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+}
+
 /* ---- Datos de Servicios y Laboratorio ---- */
 const SERVICES = [
   ['Laboratorio de Suelos','Caracterización física y mecánica de suelos y materiales para apoyar estudios geotécnicos, diseño y control de proyectos.',['Límites de Atterberg','Granulometría','Compactación','Densidad','CBR','Clasificación USCS / AASHTO'],'#laboratorios','img/real/lab-suelos.jpg','img/suelos.svg'],
