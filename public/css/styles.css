@@ -4,26 +4,26 @@
    ========================================================================== */
 
 :root {
-  /* Color Palette CEMEX Corporate Style */
-  --c-navy: #002D62;         /* Azul Corporativo Principal */
-  --c-navy-dark: #001A3B;    /* Azul Oscuro Titulares */
-  --c-navy-light: #00408A;   /* Azul Intermedio */
-  --c-red: #E31B23;          /* Rojo Acento Corporativo */
-  --c-red-hover: #C21118;    /* Rojo Hover */
-  --c-gold: #D4AF37;         /* Dorado/Amarillo Acento */
+  /* Earthy Dark, Green & Red Details Palette */
+  --c-navy: #2A6B3B;         /* Verde Principal Corporativo */
+  --c-navy-dark: #1E2B22;    /* Oscuro Tierra / Verde Titulares */
+  --c-navy-light: #3B8C50;   /* Verde Claro Secundario */
+  --c-red: #C0392B;          /* Rojo Acento Detalle */
+  --c-red-hover: #A93226;    /* Rojo Oscuro Hover */
+  --c-gold: #D4AC0D;         /* Dorado Acento */
 
-  /* Neutrales Neutros Limpios */
-  --c-ink: #101828;          /* Texto Principal Oscuro */
-  --c-body: #475467;         /* Texto Parrafos */
-  --c-muted: #667085;        /* Subtextos */
-  --c-border: #E2E8F0;       /* Bordes Finos */
-  --c-border-subtle: #F1F5F9;
+  /* Neutrales Neutros Limpios Tierra */
+  --c-ink: #1F1B16;          /* Texto Principal Oscuro Tierra */
+  --c-body: #4A443E;         /* Texto Párrafos Tierra */
+  --c-muted: #736B63;        /* Subtextos Tierra */
+  --c-border: #E5E0DA;       /* Bordes Finos Tierra */
+  --c-border-subtle: #F5F2EE;
 
   /* Fondos */
   --bg-white: #FFFFFF;
-  --bg-light: #F8FAFC;       /* Gris Fondo Claro */
-  --bg-gray: #F1F5F9;        /* Gris Fondo Secciones */
-  --bg-dark: #0B1320;        /* Fondo Oscuro Footer / Seccion Geofisica */
+  --bg-light: #FAF8F5;       /* Fondo Claro Cálido Tierra */
+  --bg-gray: #F2EFEA;        /* Gris Tierra Secciones */
+  --bg-dark: #1F1B16;        /* Fondo Oscuro Tierra */
   --bg-card: #FFFFFF;
 
   /* Tipografia y Bordes */
@@ -34,10 +34,10 @@
   --radius-full: 9999px;
 
   /* Sombras Limpias Proporcionales */
-  --shadow-sm: 0 2px 8px rgba(16, 24, 40, 0.04);
-  --shadow-md: 0 6px 20px rgba(16, 24, 40, 0.08);
-  --shadow-lg: 0 16px 36px rgba(16, 24, 40, 0.12);
-  --shadow-glow: 0 0 20px rgba(0, 45, 98, 0.15);
+  --shadow-sm: 0 2px 8px rgba(31, 27, 22, 0.05);
+  --shadow-md: 0 6px 20px rgba(31, 27, 22, 0.08);
+  --shadow-lg: 0 16px 36px rgba(31, 27, 22, 0.12);
+  --shadow-glow: 0 0 20px rgba(42, 107, 59, 0.18);
 
   --ease-main: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -74,19 +74,19 @@
 
 /* Dark Mode Color Palette Overrides */
 body.dark-mode {
-  --c-ink: #F1F5F9;
-  --c-body: #CBD5E1;
-  --c-muted: #94A3B8;
-  --c-border: #1E293B;
-  --c-border-subtle: #0F172A;
+  --c-ink: #F5F2EE;
+  --c-body: #D1C9BF;
+  --c-muted: #A39B90;
+  --c-border: #3D352E;
+  --c-border-subtle: #2D2620;
 
-  --bg-white: #0F172A;
-  --bg-light: #0B1320;
-  --bg-gray: #111827;
-  --bg-dark: #030712;
-  --bg-card: #1E293B;
+  --bg-white: #2A241F;
+  --bg-light: #1F1B16;
+  --bg-gray: #2D2620;
+  --bg-dark: #14110E;
+  --bg-card: #2A241F;
 
-  --c-navy-dark: #F8FAFC;
+  --c-navy-dark: #F5F2EE;
 }
 
 body.dark-mode .theme-toggle__icon--moon {

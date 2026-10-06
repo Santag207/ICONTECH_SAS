@@ -14,8 +14,7 @@ function applyTheme(isDark) {
 }
 
 const savedTheme = localStorage.getItem('theme');
-const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-const initialDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+const initialDark = savedTheme === 'dark';
 
 applyTheme(initialDark);
 
