@@ -672,8 +672,28 @@ h4 { font-size: 18px; font-weight: 700; }
   stroke: currentColor;
   stroke-width: 2;
 }
-.topbar__lang b {
+.topbar__lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.topbar__lang-btn {
+  background: none;
+  border: none;
+  color: #94A3B8;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+}
+.topbar__lang-btn:hover {
   color: #FFFFFF;
+}
+.topbar__lang-btn.active {
+  color: #FFFFFF;
+  background-color: var(--c-red-primary);
 }
 
 /* Header Navbar CEMEX */

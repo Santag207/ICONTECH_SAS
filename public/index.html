@@ -12,17 +12,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<script src="js/i18n.js"></script>
 </head>
 <body>
-<a class="skip" href="#main">Saltar al contenido principal</a>
+<a class="skip" href="#main" data-i18n="skip_link">Saltar al contenido principal</a>
 
 <!-- TOPBAR CORPORATIVA CEMEX STYLE -->
 <div class="topbar" id="topbar">
   <div class="wrap topbar__in">
     <div class="topbar__left">
-      <span class="topbar__tag"><span class="topbar__dot"></span> Haciendo la diferencia con excelencia</span>
+      <span class="topbar__tag"><span class="topbar__dot"></span> <span data-i18n="topbar_tag">Haciendo la diferencia con excelencia</span></span>
       <span class="topbar__sep">|</span>
-      <span class="topbar__location">Villavicencio · Meta · Colombia</span>
+      <span class="topbar__location" data-i18n="topbar_location">Villavicencio · Meta · Colombia</span>
     </div>
     <div class="topbar__right">
       <a href="tel:+573212718824" class="topbar__link"><svg class="topbar__icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg> (+57) 321 271 8824</a>
@@ -32,10 +33,13 @@
       <button class="theme-toggle" id="themeToggleBtn" aria-label="Cambiar tema claro/oscuro" title="Cambiar a Modo Oscuro/Claro">
         <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
         <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-        <span class="theme-toggle__text">Modo Oscuro</span>
+        <span class="theme-toggle__text" data-i18n="topbar_dark_mode">Modo Oscuro</span>
       </button>
       <span class="topbar__sep">|</span>
-      <span class="topbar__lang"><b>ES</b> <a href="#">EN</a></span>
+      <div class="topbar__lang" id="langSelector">
+        <button type="button" class="topbar__lang-btn active" data-lang="es">ES</button>
+        <button type="button" class="topbar__lang-btn" data-lang="en">EN</button>
+      </div>
     </div>
   </div>
 </div>
@@ -52,41 +56,41 @@
     </a>
 
     <nav aria-label="Navegación principal" class="menu" id="menu">
-      <a href="#inicio" class="menu__link active">Inicio</a>
-      <a href="#nosotros" class="menu__link">Acerca de</a>
+      <a href="#inicio" class="menu__link active" data-i18n="nav_home">Inicio</a>
+      <a href="#nosotros" class="menu__link" data-i18n="nav_about">Acerca de</a>
       <div class="dd">
-        <a href="#servicios" class="menu__link dd__btn" aria-haspopup="true">Productos & Soluciones <svg class="dd__arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a>
+        <a href="#servicios" class="menu__link dd__btn" aria-haspopup="true"><span data-i18n="nav_solutions">Productos & Soluciones</span> <svg class="dd__arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a>
         <div class="dd__panel">
           <a href="#laboratorios" class="dd__item">
-            <span class="dd__title">Laboratorio de Suelos</span>
-            <span class="dd__desc">Caracterización física, mecánica y estratigrafía de subsuelos.</span>
+            <span class="dd__title" data-i18n="dd_lab_suelos_title">Laboratorio de Suelos</span>
+            <span class="dd__desc" data-i18n="dd_lab_suelos_desc">Caracterización física, mecánica y estratigrafía de subsuelos.</span>
           </a>
           <a href="#laboratorios" data-tab="concretos" class="dd__item">
-            <span class="dd__title">Laboratorio de Concretos</span>
-            <span class="dd__desc">Ensayos de resistencia, cilindros y durabilidad de mezclas.</span>
+            <span class="dd__title" data-i18n="dd_lab_concretos_title">Laboratorio de Concretos</span>
+            <span class="dd__desc" data-i18n="dd_lab_concretos_desc">Ensayos de resistencia, cilindros y durabilidad de mezclas.</span>
           </a>
           <a href="#laboratorios" data-tab="pavimentos" class="dd__item">
-            <span class="dd__title">Laboratorio de Pavimentos</span>
-            <span class="dd__desc">Caracterización de mezclas asfálticas y materiales de cantera.</span>
+            <span class="dd__title" data-i18n="dd_lab_pavimentos_title">Laboratorio de Pavimentos</span>
+            <span class="dd__desc" data-i18n="dd_lab_pavimentos_desc">Caracterización de mezclas asfálticas y materiales de cantera.</span>
           </a>
           <a href="#geofisica" class="dd__item">
-            <span class="dd__title">Geofísica Especializada</span>
-            <span class="dd__desc">Exploración sísmica MASW, tomografía eléctrica y SEV.</span>
+            <span class="dd__title" data-i18n="dd_geofisica_title">Geofísica Especializada</span>
+            <span class="dd__desc" data-i18n="dd_geofisica_desc">Exploración sísmica MASW, tomografía eléctrica y SEV.</span>
           </a>
           <a href="#patologia" class="dd__item">
-            <span class="dd__title">Patología Estructural</span>
-            <span class="dd__desc">Auscultación no destructiva, núcleos y esclerometría.</span>
+            <span class="dd__title" data-i18n="dd_patologia_title">Patología Estructural</span>
+            <span class="dd__desc" data-i18n="dd_patologia_desc">Auscultación no destructiva, núcleos y esclerometría.</span>
           </a>
           <a href="#consultoria" class="dd__item">
-            <span class="dd__title">Consultoría Geotécnica</span>
-            <span class="dd__desc">Diseño de cimentaciones, estabilidad de taludes y vías.</span>
+            <span class="dd__title" data-i18n="dd_consultoria_title">Consultoría Geotécnica</span>
+            <span class="dd__desc" data-i18n="dd_consultoria_desc">Diseño de cimentaciones, estabilidad de taludes y vías.</span>
           </a>
         </div>
       </div>
-      <a href="#proyectos" class="menu__link">Proyectos</a>
-      <a href="#calidad" class="menu__link">Calidad</a>
-      <a href="#contacto" class="menu__link">Contacto</a>
-      <a href="#cotizar" class="btn btn--header open-quote-modal-btn">Solicitar Cotización</a>
+      <a href="#proyectos" class="menu__link" data-i18n="nav_projects">Proyectos</a>
+      <a href="#calidad" class="menu__link" data-i18n="nav_quality">Calidad</a>
+      <a href="#contacto" class="menu__link" data-i18n="nav_contact">Contacto</a>
+      <a href="#cotizar" class="btn btn--header open-quote-modal-btn" data-i18n="nav_quote_btn">Solicitar Cotización</a>
     </nav>
     <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
   </div>
@@ -98,13 +102,13 @@
 <section class="hero" id="inicio">
   <div class="wrap hero__in">
     <div class="hero__content">
-      <div class="hero__badge"><span class="hero__badge-dot"></span> INGENIERÍA · LABORATORIO · CONTROL DE CALIDAD</div>
-      <h1 class="hero__title">Precisión técnica para construir proyectos sólidos y sostenibles.</h1>
-      <p class="hero__subtitle">Proporcionamos ensayos normativos, estudios geotécnicos y geofísica avanzada que garantizan el control de calidad integral en la construcción e infraestructura.</p>
+      <div class="hero__badge"><span class="hero__badge-dot"></span> <span data-i18n="hero_badge">INGENIERÍA · LABORATORIO · CONTROL DE CALIDAD</span></div>
+      <h1 class="hero__title" data-i18n="hero_title">Precisión técnica para construir proyectos sólidos y sostenibles.</h1>
+      <p class="hero__subtitle" data-i18n="hero_subtitle">Proporcionamos ensayos normativos, estudios geotécnicos y geofísica avanzada que garantizan el control de calidad integral en la construcción e infraestructura.</p>
 
       <div class="hero__actions">
-        <button class="btn btn--primary open-quote-modal-btn">Solicitar Cotización <svg class="btn__arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-        <a href="#servicios" class="btn btn--secondary">Ver Soluciones</a>
+        <button class="btn btn--primary open-quote-modal-btn"><span data-i18n="hero_btn_quote">Solicitar Cotización</span> <svg class="btn__arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        <a href="#servicios" class="btn btn--secondary" data-i18n="hero_btn_solutions">Ver Soluciones</a>
       </div>
     </div>
 
@@ -113,13 +117,13 @@
         <img src="img/real/lab-suelos.jpg" alt="Instalaciones del Laboratorio de Suelos INCONTECH" class="hero__main-photo">
         <div class="hero__svg-badge">
           <img src="img/hero-strata.svg" alt="Esquema Técnico de Estratigrafía" class="hero__svg-thumb">
-          <span class="hero__svg-caption">Análisis Estratigráfico</span>
+          <span class="hero__svg-caption" data-i18n="hero_svg_caption">Análisis Estratigráfico</span>
         </div>
         <div class="hero__floating-badge">
           <svg class="hero__badge-icon" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           <div>
-            <strong>Ensayos Calibrados</strong>
-            <small>Normas INVIAS / NTC / ASTM</small>
+            <strong data-i18n="hero_calibrated_title">Ensayos Calibrados</strong>
+            <small data-i18n="hero_calibrated_sub">Normas INVIAS / NTC / ASTM</small>
           </div>
         </div>
       </div>
@@ -131,19 +135,19 @@
     <div class="wrap hero__metrics-in">
       <div class="metric-item">
         <span class="metric-item__num">+100%</span>
-        <span class="metric-item__label">Cumplimiento Normativo ONAC</span>
+        <span class="metric-item__label" data-i18n="metric_onac_label">Cumplimiento Normativo ONAC</span>
       </div>
       <div class="metric-item">
-        <span class="metric-item__num">3</span>
-        <span class="metric-item__label">Laboratorios Especializados</span>
+        <span class="metric-item__num" data-i18n="metric_labs_num">3</span>
+        <span class="metric-item__label" data-i18n="metric_labs_label">Laboratorios Especializados</span>
       </div>
       <div class="metric-item">
-        <span class="metric-item__num">100%</span>
-        <span class="metric-item__label">Equipos Calibrados</span>
+        <span class="metric-item__num" data-i18n="metric_equip_num">100%</span>
+        <span class="metric-item__label" data-i18n="metric_equip_label">Equipos Calibrados</span>
       </div>
       <div class="metric-item">
-        <span class="metric-item__num">Acompañamiento</span>
-        <span class="metric-item__label">Asesoría Técnica Continua</span>
+        <span class="metric-item__num" data-i18n="metric_support_num">Acompañamiento</span>
+        <span class="metric-item__label" data-i18n="metric_support_label">Asesoría Técnica Continua</span>
       </div>
     </div>
   </div>
@@ -155,34 +159,34 @@
     <div class="about__media">
       <div class="img-frame img-frame--interactive">
         <img src="img/real/certificacion_trans.png" alt="Calidad y Acreditación INCONTECH S.A.S." class="zoom-img">
-        <div class="img-frame__badge"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Excelencia Certificada</div>
+        <div class="img-frame__badge"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> <span data-i18n="about_cert_badge">Excelencia Certificada</span></div>
       </div>
     </div>
     <div class="about__info">
-      <span class="sec-eyebrow">ACERCA DE INCONTECH S.A.S.</span>
-      <h2 class="sec-title">Ingeniería de alto desempeño respaldada por rigurosidad técnica.</h2>
-      <p class="sec-desc">INCONTECH S.A.S. es una firma líder en el desarrollo de <strong>Laboratorio de Suelos, Concretos y Pavimentos</strong>, fundada bajo la premisa <em>"Haciendo la diferencia con excelencia"</em> para aportar seguridad, eficiencia y garantía a la infraestructura del país.</p>
-      <p class="sec-desc">Contamos con un riguroso Sistema de Gestión de Calidad y equipos calibrados por laboratorios acreditados ante ONAC, garantizando resultados reproducibles y con trazabilidad técnica absoluta.</p>
+      <span class="sec-eyebrow" data-i18n="about_eyebrow">ACERCA DE INCONTECH S.A.S.</span>
+      <h2 class="sec-title" data-i18n="about_title">Ingeniería de alto desempeño respaldada por rigurosidad técnica.</h2>
+      <p class="sec-desc" data-i18n="about_desc1" data-i18n-html>INCONTECH S.A.S. es una firma líder en el desarrollo de <strong>Laboratorio de Suelos, Concretos y Pavimentos</strong>, fundada bajo la premisa <em>"Haciendo la diferencia con excelencia"</em> para aportar seguridad, eficiencia y garantía a la infraestructura del país.</p>
+      <p class="sec-desc" data-i18n="about_desc2">Contamos con un riguroso Sistema de Gestión de Calidad y equipos calibrados por laboratorios acreditados ante ONAC, garantizando resultados reproducibles y con trazabilidad técnica absoluta.</p>
 
       <div class="values-grid">
         <div class="value-card">
           <div class="value-card__icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
           <div class="value-card__text">
-            <h4>Calidad Certificada</h4>
-            <p>Procedimientos estandarizados y calibración ONAC.</p>
+            <h4 data-i18n="about_val1_title">Calidad Certificada</h4>
+            <p data-i18n="about_val1_desc">Procedimientos estandarizados y calibración ONAC.</p>
           </div>
         </div>
         <div class="value-card">
           <div class="value-card__icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
           <div class="value-card__text">
-            <h4>Innovación Geotécnica</h4>
-            <p>Metodologías ágiles en exploración geofísica y ensayos.</p>
+            <h4 data-i18n="about_val2_title">Innovación Geotécnica</h4>
+            <p data-i18n="about_val2_desc">Metodologías ágiles en exploración geofísica y ensayos.</p>
           </div>
         </div>
       </div>
 
       <div class="about__cta">
-        <a href="#calidad" class="btn btn--outline">Conocer Sistema de Calidad</a>
+        <a href="#calidad" class="btn btn--outline" data-i18n="about_cta_btn">Conocer Sistema de Calidad</a>
       </div>
     </div>
   </div>
@@ -192,9 +196,9 @@
 <section class="sec sec--gray" id="servicios">
   <div class="wrap">
     <div class="sec-header center">
-      <span class="sec-eyebrow">PRODUCTOS Y SOLUCIONES</span>
-      <h2 class="sec-title">Capacidades integrales para cada fase de su obra</h2>
-      <p class="sec-desc">Acompañamos el ciclo completo de la infraestructura desde la caracterización básica del suelo hasta el diagnóstico patológico avanzado.</p>
+      <span class="sec-eyebrow" data-i18n="serv_eyebrow">PRODUCTOS Y SOLUCIONES</span>
+      <h2 class="sec-title" data-i18n="serv_title">Capacidades integrales para cada fase de su obra</h2>
+      <p class="sec-desc" data-i18n="serv_desc">Acompañamos el ciclo completo de la infraestructura desde la caracterización básica del suelo hasta el diagnóstico patológico avanzado.</p>
     </div>
 
     <div class="cards-grid" id="cards">
@@ -202,17 +206,17 @@
       <div class="corp-card">
         <div class="corp-card__image-wrap">
           <img src="img/real/lab-suelos.jpg" alt="Laboratorio de Suelos, Concretos y Pavimentos" class="corp-card__image">
-          <span class="corp-card__tag">Especialidad</span>
+          <span class="corp-card__tag" data-i18n="serv_card1_tag">Especialidad</span>
         </div>
         <div class="corp-card__body">
-          <h3 class="corp-card__title">Laboratorio de Materiales</h3>
-          <p class="corp-card__desc">Ensayos de física y mecánica para suelos, concretos, agregados y mezclas asfálticas bajo norma INVIAS/ASTM.</p>
+          <h3 class="corp-card__title" data-i18n="serv_card1_title">Laboratorio de Materiales</h3>
+          <p class="corp-card__desc" data-i18n="serv_card1_desc">Ensayos de física y mecánica para suelos, concretos, agregados y mezclas asfálticas bajo norma INVIAS/ASTM.</p>
           <ul class="corp-card__list">
-            <li>Caracterización de suelos (Límites, CBR, Granulometría)</li>
-            <li>Concretos (Compresión de cilindros, Vigas, Mezclas)</li>
-            <li>Pavimentos (Marshall, Extracción de asfalto, Agregados)</li>
+            <li data-i18n="serv_card1_li1">Caracterización de suelos (Límites, CBR, Granulometría)</li>
+            <li data-i18n="serv_card1_li2">Concretos (Compresión de cilindros, Vigas, Mezclas)</li>
+            <li data-i18n="serv_card1_li3">Pavimentos (Marshall, Extracción de asfalto, Agregados)</li>
           </ul>
-          <a href="#laboratorios" class="corp-card__link">Explorar Laboratorio <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="#laboratorios" class="corp-card__link"><span data-i18n="serv_card1_link">Explorar Laboratorio</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
 
@@ -220,17 +224,17 @@
       <div class="corp-card">
         <div class="corp-card__image-wrap">
           <img src="img/real/proj-fiscalia.jpg" alt="Estudios Geofísicos y Exploración del Subsuelo" class="corp-card__image">
-          <span class="corp-card__tag">Avanzado</span>
+          <span class="corp-card__tag" data-i18n="serv_card2_tag">Avanzado</span>
         </div>
         <div class="corp-card__body">
-          <h3 class="corp-card__title">Geofísica Especializada</h3>
-          <p class="corp-card__desc">Exploración no destructiva del subsuelo para obtener perfiles sísmicos y tomografías de alta resolución.</p>
+          <h3 class="corp-card__title" data-i18n="serv_card2_title">Geofísica Especializada</h3>
+          <p class="corp-card__desc" data-i18n="serv_card2_desc">Exploración no destructiva del subsuelo para obtener perfiles sísmicos y tomografías de alta resolución.</p>
           <ul class="corp-card__list">
-            <li>Refracción Sísmica y MASW (Ocas / Vs30)</li>
-            <li>Tomografía de Resistividad Eléctrica (TRE)</li>
-            <li>Sondeos Eléctricos Verticales (SEV)</li>
+            <li data-i18n="serv_card2_li1">Refracción Sísmica y MASW (Ondas / Vs30)</li>
+            <li data-i18n="serv_card2_li2">Tomografía de Resistividad Eléctrica (TRE)</li>
+            <li data-i18n="serv_card2_li3">Sondeos Eléctricos Verticales (SEV)</li>
           </ul>
-          <a href="#geofisica" class="corp-card__link">Ver Métodos Geofísicos <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="#geofisica" class="corp-card__link"><span data-i18n="serv_card2_link">Ver Métodos Geofísicos</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
 
@@ -238,17 +242,17 @@
       <div class="corp-card">
         <div class="corp-card__image-wrap">
           <img src="img/real/lab-concretos.jpg" alt="Patología Estructural y Ensayos no destructivos" class="corp-card__image">
-          <span class="corp-card__tag">Diagnóstico</span>
+          <span class="corp-card__tag" data-i18n="serv_card3_tag">Diagnóstico</span>
         </div>
         <div class="corp-card__body">
-          <h3 class="corp-card__title">Patología Estructural</h3>
-          <p class="corp-card__desc">Evaluación, auscultación y diagnóstico técnico sobre estructuras de concreto y mampostería existentes.</p>
+          <h3 class="corp-card__title" data-i18n="serv_card3_title">Patología Estructural</h3>
+          <p class="corp-card__desc" data-i18n="serv_card3_desc">Evaluación, auscultación y diagnóstico técnico sobre estructuras de concreto y mampostería existentes.</p>
           <ul class="corp-card__list">
-            <li>Extracción de núcleos y prueba de compresión</li>
-            <li>Esclerometría y detección de acero (Pacometría)</li>
-            <li>Ensayos de carbonatación y ultra sonido</li>
+            <li data-i18n="serv_card3_li1">Extracción de núcleos y prueba de compresión</li>
+            <li data-i18n="serv_card3_li2">Esclerometría y detección de acero (Pacometría)</li>
+            <li data-i18n="serv_card3_li3">Ensayos de carbonatación y ultrasonido</li>
           </ul>
-          <a href="#patologia" class="corp-card__link">Ver Patología Estructural <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="#patologia" class="corp-card__link"><span data-i18n="serv_card3_link">Ver Patología Estructural</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
 
@@ -256,17 +260,17 @@
       <div class="corp-card">
         <div class="corp-card__image-wrap">
           <img src="img/real/proj-castilla.jpg" alt="Consultoría e Ingeniería Geotécnica INCONTECH" class="corp-card__image">
-          <span class="corp-card__tag">Asesoría</span>
+          <span class="corp-card__tag" data-i18n="serv_card4_tag">Asesoría</span>
         </div>
         <div class="corp-card__body">
-          <h3 class="corp-card__title">Consultoría & Diseños</h3>
-          <p class="corp-card__desc">Estudios integrales de ingeniería civil para respaldar diseños, cimentaciones y obras geotécnicas.</p>
+          <h3 class="corp-card__title" data-i18n="serv_card4_title">Consultoría & Diseños</h3>
+          <p class="corp-card__desc" data-i18n="serv_card4_desc">Estudios integrales de ingeniería civil para respaldar diseños, cimentaciones y obras geotécnicas.</p>
           <ul class="corp-card__list">
-            <li>Estudios geotécnicos y capacidad portante</li>
-            <li>Análisis de estabilidad de taludes y contención</li>
-            <li>Diseño geométrico, hidráulico y estructural de vías</li>
+            <li data-i18n="serv_card4_li1">Estudios geotécnicos y capacidad portante</li>
+            <li data-i18n="serv_card4_li2">Análisis de estabilidad de taludes y contención</li>
+            <li data-i18n="serv_card4_li3">Diseño geométrico, hidráulico y estructural de vías</li>
           </ul>
-          <a href="#consultoria" class="corp-card__link">Ver Consultoría <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="#consultoria" class="corp-card__link"><span data-i18n="serv_card4_link">Ver Consultoría</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -277,19 +281,19 @@
 <section class="sec sec--light" id="laboratorios">
   <div class="wrap">
     <div class="sec-header">
-      <span class="sec-eyebrow">LABORATORIO DE ENSAYOS</span>
-      <h2 class="sec-title">De la muestra al dato. Del dato a la decisión de ingeniería.</h2>
-      <p class="sec-desc">Seleccione una categoría de laboratorio para conocer los ensayos disponibles y el estándar normativo aplicado.</p>
+      <span class="sec-eyebrow" data-i18n="labs_eyebrow">LABORATORIO DE ENSAYOS</span>
+      <h2 class="sec-title" data-i18n="labs_title">De la muestra al dato. Del dato a la decisión de ingeniería.</h2>
+      <p class="sec-desc" data-i18n="labs_desc">Seleccione una categoría de laboratorio para conocer los ensayos disponibles y el estándar normativo aplicado.</p>
     </div>
 
     <div class="tab-nav" role="tablist" aria-label="Laboratorios de Ensayo">
-      <button role="tab" aria-selected="true" class="tab-nav__btn active" data-tab="suelos">Laboratorio de Suelos</button>
-      <button role="tab" aria-selected="false" class="tab-nav__btn" data-tab="concretos">Laboratorio de Concretos</button>
-      <button role="tab" aria-selected="false" class="tab-nav__btn" data-tab="pavimentos">Laboratorio de Pavimentos</button>
+      <button role="tab" aria-selected="true" class="tab-nav__btn active" data-tab="suelos" data-i18n="tab_suelos">Laboratorio de Suelos</button>
+      <button role="tab" aria-selected="false" class="tab-nav__btn" data-tab="concretos" data-i18n="tab_concretos">Laboratorio de Concretos</button>
+      <button role="tab" aria-selected="false" class="tab-nav__btn" data-tab="pavimentos" data-i18n="tab_pavimentos">Laboratorio de Pavimentos</button>
     </div>
 
     <div class="tab-content" id="tabpanel" role="tabpanel" aria-live="polite">
-      <!-- El contenido se inyecta dinámicamente vía JS o inicializa pre-renderizado -->
+      <!-- El contenido se inyecta dinámicamente vía JS -->
     </div>
   </div>
 </section>
@@ -298,51 +302,51 @@
 <section class="sec sec--dark" id="esquemas-tecnicos">
   <div class="wrap">
     <div class="sec-header center sec-header--white">
-      <span class="sec-eyebrow sec-eyebrow--gold">ESQUEMAS TÉCNICOS Y ANÁLISIS</span>
-      <h2 class="sec-title">Modelamiento interactivo de ensayos y exploración</h2>
-      <p class="sec-desc">Pase el cursor sobre los puntos destacados de cada esquema técnico para consultar los componentes y procedimientos normativos.</p>
+      <span class="sec-eyebrow sec-eyebrow--gold" data-i18n="svg_eyebrow">ESQUEMAS TÉCNICOS Y ANÁLISIS</span>
+      <h2 class="sec-title" data-i18n="svg_title">Modelamiento interactivo de ensayos y exploración</h2>
+      <p class="sec-desc" data-i18n="svg_desc">Pase el cursor sobre los puntos destacados de cada esquema técnico para consultar los componentes y procedimientos normativos.</p>
     </div>
 
     <div class="svg-grid">
       <!-- Panel 1: Geofísica MASW -->
       <div class="svg-panel">
         <div class="svg-panel__header">
-          <h3>Sismografía MASW y Tomografía Eléctrica</h3>
-          <span class="svg-panel__badge">Geofísica</span>
+          <h3 data-i18n="svg_panel1_title">Sismografía MASW y Tomografía Eléctrica</h3>
+          <span class="svg-panel__badge" data-i18n="svg_panel1_badge">Geofísica</span>
         </div>
         <div class="svg-panel__body">
           <img src="img/geofisica.svg" alt="Esquema animado de Geofísica MASW" class="svg-schematic" data-popover="geofisica">
         </div>
         <div class="svg-panel__footer">
-          <p>Modelación de propagación de ondas de corte Vs30 y resistividad aparente.</p>
+          <p data-i18n="svg_panel1_foot">Modelación de propagación de ondas de corte Vs30 y resistividad aparente.</p>
         </div>
       </div>
 
       <!-- Panel 2: Patología Estructural -->
       <div class="svg-panel">
         <div class="svg-panel__header">
-          <h3>Auscultación y Núcleos de Concreto</h3>
-          <span class="svg-panel__badge">Patología</span>
+          <h3 data-i18n="svg_panel2_title">Auscultación y Núcleos de Concreto</h3>
+          <span class="svg-panel__badge" data-i18n="svg_panel2_badge">Patología</span>
         </div>
         <div class="svg-panel__body">
           <img src="img/patologia.svg" alt="Esquema animado de Patología Estructural" class="svg-schematic" data-popover="patologia">
         </div>
         <div class="svg-panel__footer">
-          <p>Detalle de inspección no destructiva y ensayo de extracción de núcleo con pacometría.</p>
+          <p data-i18n="svg_panel2_foot">Detalle de inspección no destructiva y ensayo de extracción de núcleo con pacometría.</p>
         </div>
       </div>
 
       <!-- Panel 3: Consultoría Geotécnica -->
       <div class="svg-panel">
         <div class="svg-panel__header">
-          <h3>Perfil Estratigráfico y Taludes</h3>
-          <span class="svg-panel__badge">Consultoría</span>
+          <h3 data-i18n="svg_panel3_title">Perfil Estratigráfico y Taludes</h3>
+          <span class="svg-panel__badge" data-i18n="svg_panel3_badge">Consultoría</span>
         </div>
         <div class="svg-panel__body">
           <img src="img/consultoria.svg" alt="Esquema animado de Consultoría Geotécnica" class="svg-schematic" data-popover="consultoria">
         </div>
         <div class="svg-panel__footer">
-          <p>Identificación de horizontes de suelo, nivel freático y diseño de contención.</p>
+          <p data-i18n="svg_panel3_foot">Identificación de horizontes de suelo, nivel freático y diseño de contención.</p>
         </div>
       </div>
     </div>
@@ -353,9 +357,9 @@
 <section class="sec sec--gray" id="perfil">
   <div class="wrap">
     <div class="sec-header">
-      <span class="sec-eyebrow">EXPLORACIÓN ESTRATIGRÁFICA</span>
-      <h2 class="sec-title">Cada estrato de suelo requiere un ensayo específico</h2>
-      <p class="sec-desc">Seleccione una capa del subsuelo para conocer sus propiedades físicas y los ensayos recomendados.</p>
+      <span class="sec-eyebrow" data-i18n="exp_eyebrow">EXPLORACIÓN ESTRATIGRÁFICA</span>
+      <h2 class="sec-title" data-i18n="exp_title">Cada estrato de suelo requiere un ensayo específico</h2>
+      <p class="sec-desc" data-i18n="exp_desc">Seleccione una capa del subsuelo para conocer sus propiedades físicas y los ensayos recomendados.</p>
     </div>
 
     <div class="explorer">
@@ -363,17 +367,17 @@
       <div class="explorer__detail" id="layerDetail" aria-live="polite"></div>
 
       <div class="explorer__curve">
-        <h4>Curva Granulométrica Ilustrativa</h4>
+        <h4 data-i18n="exp_curve_title">Curva Granulométrica Ilustrativa</h4>
         <svg viewBox="0 0 320 210" class="curve-svg" role="img" aria-label="Curva granulométrica ilustrativa">
           <g class="gr"><path d="M40 20V170M100 20V170M160 20V170M220 20V170M280 20V170M40 20H290M40 70H290M40 120H290"/></g>
           <path class="ax" d="M40 20V170H290"/>
           <path class="draw" d="M40 165C100 160 130 120 170 85S250 30 285 25"/>
-          <text x="40" y="188">Tamaño de partícula (tamiz)</text>
+          <text x="40" y="188" data-i18n="exp_curve_x">Tamaño de partícula (tamiz)</text>
           <text x="2" y="24">100%</text>
           <text x="10" y="174">0%</text>
-          <text x="150" y="12">% Pasa acumulado</text>
+          <text x="150" y="12" data-i18n="exp_curve_y">% Pasa acumulado</text>
         </svg>
-        <p class="curve-caption">Gráfico esquemático de distribución granulométrica según Tamizado INVIAS E-123.</p>
+        <p class="curve-caption" data-i18n="exp_curve_caption">Gráfico esquemático de distribución granulométrica según Tamizado INVIAS E-123.</p>
       </div>
     </div>
   </div>
@@ -383,26 +387,26 @@
 <section class="sec sec--light" id="patologia">
   <div class="wrap split split--reverse">
     <div class="split__content">
-      <span class="sec-eyebrow">DIAGNÓSTICO Y SEGURIDAD</span>
-      <h2 class="sec-title">Patología Estructural & Control en Obra</h2>
-      <p class="sec-desc">Antes de tomar decisiones de intervención o reforzamiento, es imprescindible diagnosticar el estado real de la estructura con pruebas no destructivas y de laboratorio.</p>
+      <span class="sec-eyebrow" data-i18n="pat_eyebrow">DIAGNÓSTICO Y SEGURIDAD</span>
+      <h2 class="sec-title" data-i18n="pat_title">Patología Estructural & Control en Obra</h2>
+      <p class="sec-desc" data-i18n="pat_desc">Antes de tomar decisiones de intervención o reforzamiento, es imprescindible diagnosticar el estado real de la estructura con pruebas no destructivas y de laboratorio.</p>
 
       <ul class="feature-list">
-        <li><strong>Extracción de núcleos de concreto:</strong> Ensayo de resistencia a la compresión (ASTM C42 / INVIAS E-410).</li>
-        <li><strong>Esclerometría y dureza superficial:</strong> Determinación del índice de rebote en elementos estructurales.</li>
-        <li><strong>Localización de acero (Pacometría):</strong> Mapeo no destructivo de recubrimientos y diámetros de varilla.</li>
-        <li><strong>Ensayos de Carbonatación:</strong> Medición de avance del frente ácido en concreto armado.</li>
+        <li data-i18n="pat_li1" data-i18n-html><strong>Extracción de núcleos de concreto:</strong> Ensayo de resistencia a la compresión (ASTM C42 / INVIAS E-410).</li>
+        <li data-i18n="pat_li2" data-i18n-html><strong>Esclerometría y dureza superficial:</strong> Determinación del índice de rebote en elementos estructurales.</li>
+        <li data-i18n="pat_li3" data-i18n-html><strong>Localización de acero (Pacometría):</strong> Mapeo no destructivo de recubrimientos y diámetros de varilla.</li>
+        <li data-i18n="pat_li4" data-i18n-html><strong>Ensayos de Carbonatación:</strong> Medición de avance del frente ácido en concreto armado.</li>
       </ul>
 
       <div class="split__actions">
-        <a href="#cotizar" class="btn btn--primary">Solicitar Diagnóstico Estructural</a>
+        <a href="#cotizar" class="btn btn--primary" data-i18n="pat_btn">Solicitar Diagnóstico Estructural</a>
       </div>
     </div>
 
     <div class="split__media">
       <div class="img-frame img-frame--interactive">
         <img src="img/real/lab-concretos.jpg" alt="Evaluación y Ensayo de Núcleos de Concreto INCONTECH" class="zoom-img">
-        <div class="img-frame__badge">Pruebas Bajo Norma E-410</div>
+        <div class="img-frame__badge" data-i18n="pat_badge">Pruebas Bajo Norma E-410</div>
       </div>
     </div>
   </div>
@@ -412,34 +416,34 @@
 <section class="sec sec--gray" id="consultoria">
   <div class="wrap">
     <div class="sec-header center">
-      <span class="sec-eyebrow">SERVICIOS DE CONSULTORÍA</span>
-      <h2 class="sec-title">Transformando datos de ensayo en diseños seguros</h2>
-      <p class="sec-desc">Acompañamos a diseñadores, constructores e interventores en la formulación de proyectos geotécnicos y viales.</p>
+      <span class="sec-eyebrow" data-i18n="con_eyebrow">SERVICIOS DE CONSULTORÍA</span>
+      <h2 class="sec-title" data-i18n="con_title">Transformando datos de ensayo en diseños seguros</h2>
+      <p class="sec-desc" data-i18n="con_desc">Acompañamos a diseñadores, constructores e interventores en la formulación de proyectos geotécnicos y viales.</p>
     </div>
 
     <div class="consult-grid">
       <div class="consult-card">
         <div class="consult-card__icon"><svg viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h5"/></svg></div>
-        <h4>Estudios Geotécnicos</h4>
-        <p>Cimentaciones superficiales, profundas y cálculo de capacidad portante NSR-10.</p>
+        <h4 data-i18n="con_card1_title">Estudios Geotécnicos</h4>
+        <p data-i18n="con_card1_desc">Cimentaciones superficiales, profundas y cálculo de capacidad portante NSR-10.</p>
       </div>
 
       <div class="consult-card">
         <div class="consult-card__icon"><svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></div>
-        <h4>Estabilidad de Taludes</h4>
-        <p>Análisis de taludes, modelamiento numérico y muros de contención.</p>
+        <h4 data-i18n="con_card2_title">Estabilidad de Taludes</h4>
+        <p data-i18n="con_card2_desc">Análisis de taludes, modelamiento numérico y muros de contención.</p>
       </div>
 
       <div class="consult-card">
         <div class="consult-card__icon"><svg viewBox="0 0 24 24"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg></div>
-        <h4>Diseño de Pavimentos</h4>
-        <p>Estructuración flexible y rígida según metodologías AASHTO e INVIAS.</p>
+        <h4 data-i18n="con_card3_title">Diseño de Pavimentos</h4>
+        <p data-i18n="con_card3_desc">Estructuración flexible y rígida según metodologías AASHTO e INVIAS.</p>
       </div>
 
       <div class="consult-card">
         <div class="consult-card__icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h4>Vulnerabilidad Sísmica</h4>
-        <p>Evaluación y diagnóstico del comportamiento sísmico de edificaciones.</p>
+        <h4 data-i18n="con_card4_title">Vulnerabilidad Sísmica</h4>
+        <p data-i18n="con_card4_desc">Evaluación y diagnóstico del comportamiento sísmico de edificaciones.</p>
       </div>
     </div>
   </div>
@@ -449,46 +453,46 @@
 <section class="sec sec--light" id="proceso">
   <div class="wrap">
     <div class="sec-header center">
-      <span class="sec-eyebrow">METODOLOGÍA DE TRABAJO</span>
-      <h2 class="sec-title">Garantía de trazabilidad en 6 pasos estructurados</h2>
-      <p class="sec-desc">Desde el muestreo inicial hasta el informe técnico final con validez legal.</p>
+      <span class="sec-eyebrow" data-i18n="proc_eyebrow">METODOLOGÍA DE TRABAJO</span>
+      <h2 class="sec-title" data-i18n="proc_title">Garantía de trazabilidad en 6 pasos estructurados</h2>
+      <p class="sec-desc" data-i18n="proc_desc">Desde el muestreo inicial hasta el informe técnico final con validez legal.</p>
     </div>
 
     <div class="steps-flow">
       <div class="step-card">
         <span class="step-card__num">01</span>
-        <h4>Entender</h4>
-        <p>Revisión técnica de requerimientos, alcance del proyecto y norma aplicable.</p>
+        <h4 data-i18n="proc_step1_title">Entender</h4>
+        <p data-i18n="proc_step1_desc">Revisión técnica de requerimientos, alcance del proyecto y norma aplicable.</p>
       </div>
 
       <div class="step-card">
         <span class="step-card__num">02</span>
-        <h4>Planificar</h4>
-        <p>Programación de muestreos de campo o recepción de especímenes en laboratorio.</p>
+        <h4 data-i18n="proc_step2_title">Planificar</h4>
+        <p data-i18n="proc_step2_desc">Programación de muestreos de campo o recepción de especímenes en laboratorio.</p>
       </div>
 
       <div class="step-card">
         <span class="step-card__num">03</span>
-        <h4>Ejecutar</h4>
-        <p>Desarrollo de los ensayos bajo procedimientos estandarizados y normas vigentes.</p>
+        <h4 data-i18n="proc_step3_title">Ejecutar</h4>
+        <p data-i18n="proc_step3_desc">Desarrollo de los ensayos bajo procedimientos estandarizados y normas vigentes.</p>
       </div>
 
       <div class="step-card">
         <span class="step-card__num">04</span>
-        <h4>Analizar</h4>
-        <p>Procesamiento de lecturas, curvas granulométricas y verificación de tolerancia.</p>
+        <h4 data-i18n="proc_step4_title">Analizar</h4>
+        <p data-i18n="proc_step4_desc">Procesamiento de lecturas, curvas granulométricas y verificación de tolerancia.</p>
       </div>
 
       <div class="step-card">
         <span class="step-card__num">05</span>
-        <h4>Entregar</h4>
-        <p>Emisión de informe final firmado por especialistas certificados.</p>
+        <h4 data-i18n="proc_step5_title">Entregar</h4>
+        <p data-i18n="proc_step5_desc">Emisión de informe final firmado por especialistas certificados.</p>
       </div>
 
       <div class="step-card">
         <span class="step-card__num">06</span>
-        <h4>Acompañar</h4>
-        <p>Soporte posentrevista para sustentar los resultados ante interventorías.</p>
+        <h4 data-i18n="proc_step6_title">Acompañar</h4>
+        <p data-i18n="proc_step6_desc">Soporte posentrevista para sustentar los resultados ante interventorías.</p>
       </div>
     </div>
   </div>
@@ -498,39 +502,38 @@
 <section class="sec sec--gray" id="calidad">
   <div class="wrap split">
     <div class="split__content">
-      <span class="sec-eyebrow">GESTIÓN Y CONTROL DE CALIDAD</span>
-      <h2 class="sec-title">La confiabilidad nace en la precisión del procedimiento</h2>
-      <p class="sec-desc">En INCONTECH S.A.S. todos los ensayos siguen un riguroso protocolo de control. Nuestros equipos cuentan con hojas de vida, mantenimiento periódico y certificados de calibración vigentes con trazabilidad a patrones internacionales.</p>
+      <span class="sec-eyebrow" data-i18n="qual_eyebrow">GESTIÓN Y CONTROL DE CALIDAD</span>
+      <h2 class="sec-title" data-i18n="qual_title">La confiabilidad nace en la precisión del procedimiento</h2>
+      <p class="sec-desc" data-i18n="qual_desc">En INCONTECH S.A.S. todos los ensayos siguen un riguroso protocolo de control. Nuestros equipos cuentan con hojas de vida, mantenimiento periódico y certificados de calibración vigentes con trazabilidad a patrones internacionales.</p>
 
       <div class="quality-badges">
         <div class="q-badge">
           <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          <span>Equipos Calibrados ONAC</span>
+          <span data-i18n="qual_badge1">Equipos Calibrados ONAC</span>
         </div>
         <div class="q-badge">
           <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          <span>Personal Técnico Certificado</span>
+          <span data-i18n="qual_badge2">Personal Técnico Certificado</span>
         </div>
         <div class="q-badge">
           <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-
-          <span>Procedimientos INVIAS & NTC</span>
+          <span data-i18n="qual_badge3">Procedimientos INVIAS & NTC</span>
         </div>
         <div class="q-badge">
           <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          <span>Cadena de Custodia de Muestras</span>
+          <span data-i18n="qual_badge4">Cadena de Custodia de Muestras</span>
         </div>
       </div>
     </div>
 
     <div class="split__media">
       <div class="quality-card-large">
-        <h3>Calibración y Control Continuo</h3>
-        <p>Garantizamos la incertidumbre de medición mediante comparaciones interlaboratorios y auditorías internas constantes.</p>
+        <h3 data-i18n="qual_card_title">Calibración y Control Continuo</h3>
+        <p data-i18n="qual_card_desc">Garantizamos la incertidumbre de medición mediante comparaciones interlaboratorios y auditorías internas constantes.</p>
         <div class="quality-steps">
-          <div><span>1</span> Verificación Diaria de Balanzas & Prensas</div>
-          <div><span>2</span> Control Térmico en Cuarto Húmedo de Curado</div>
-          <div><span>3</span> Trazabilidad Documental Inalterable</div>
+          <div data-i18n="qual_step1" data-i18n-html><span>1</span> Verificación Diaria de Balanzas & Prensas</div>
+          <div data-i18n="qual_step2" data-i18n-html><span>2</span> Control Térmico en Cuarto Húmedo de Curado</div>
+          <div data-i18n="qual_step3" data-i18n-html><span>3</span> Trazabilidad Documental Inalterable</div>
         </div>
       </div>
     </div>
@@ -541,9 +544,9 @@
 <section class="sec sec--light" id="proyectos">
   <div class="wrap">
     <div class="sec-header center">
-      <span class="sec-eyebrow">EXPERIENCIA Y TRAYECTORIA</span>
-      <h2 class="sec-title">Proyectos respaldados con nuestro control técnico</h2>
-      <p class="sec-desc">Conozca algunas de las obras de infraestructura, vías y edificación en las que hemos brindado soporte especializado.</p>
+      <span class="sec-eyebrow" data-i18n="proj_eyebrow">EXPERIENCIA Y TRAYECTORIA</span>
+      <h2 class="sec-title" data-i18n="proj_title">Proyectos respaldados con nuestro control técnico</h2>
+      <p class="sec-desc" data-i18n="proj_desc">Conozca algunas de las obras de infraestructura, vías y edificación en las que hemos brindado soporte especializado.</p>
     </div>
 
     <div class="projects-grid" id="projects">
@@ -551,7 +554,7 @@
     </div>
 
     <div class="center-cta">
-      <button class="btn btn--outline" id="moreProj" aria-expanded="false">Ver Más Proyectos</button>
+      <button class="btn btn--outline" id="moreProj" aria-expanded="false" data-i18n="proj_btn_more">Ver Más Proyectos</button>
     </div>
   </div>
 </section>
@@ -560,45 +563,45 @@
 <section class="cta-banner" id="cta">
   <div class="wrap cta-banner__in">
     <div class="cta-banner__text">
-      <h2>Atención Inmediata y Mensajes Directos</h2>
-      <p>Seleccione con 1 solo clic su servicio de interés para enviar una solicitud automática y directa por WhatsApp:</p>
+      <h2 data-i18n="cta_title">Atención Inmediata y Mensajes Directos</h2>
+      <p data-i18n="cta_desc">Seleccione con 1 solo clic su servicio de interés para enviar una solicitud automática y directa por WhatsApp:</p>
 
       <div class="cta-banner__quick-grid">
         <button class="cta-quick-btn" data-msg="Hola, requiero cotización para Ensayos de Laboratorio de Suelos.">
           <svg viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-          <span>Cotizar Suelos</span>
+          <span data-i18n="cta_q1">Cotizar Suelos</span>
         </button>
 
         <button class="cta-quick-btn" data-msg="Hola, requiero cotización para Cilindros / Ensayos de Concreto.">
           <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-          <span>Cotizar Concretos</span>
+          <span data-i18n="cta_q2">Cotizar Concretos</span>
         </button>
 
         <button class="cta-quick-btn" data-msg="Hola, requiero cotización para Ensayos de Pavimentos y Mezclas.">
           <svg viewBox="0 0 24 24"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
-          <span>Cotizar Pavimentos</span>
+          <span data-i18n="cta_q3">Cotizar Pavimentos</span>
         </button>
 
         <button class="cta-quick-btn" data-msg="Hola, necesito información y cotización sobre Estudio Geofísico (MASW / TRE).">
           <svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          <span>Geofísica MASW</span>
+          <span data-i18n="cta_q4">Geofísica MASW</span>
         </button>
 
         <button class="cta-quick-btn" data-msg="Hola, requiero un Diagnóstico de Patología Estructural o Núcleos.">
           <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          <span>Patología Estructural</span>
+          <span data-i18n="cta_q5">Patología Estructural</span>
         </button>
 
         <button class="cta-quick-btn" data-msg="Hola, requiero asesoría y Consultoría Geotécnica para un proyecto.">
           <svg viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-          <span>Consultoría Geotécnica</span>
+          <span data-i18n="cta_q6">Consultoría Geotécnica</span>
         </button>
       </div>
 
       <div class="cta-banner__footer-actions">
         <a href="tel:+573212718824" class="btn btn--transparent">
           <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;margin-right:8px"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-          Llamada Directa: (+57) 321 271 8824
+          <span data-i18n="cta_direct_call">Llamada Directa: (+57) 321 271 8824</span>
         </a>
       </div>
     </div>
@@ -609,17 +612,17 @@
 <section class="sec sec--gray" id="cotizar">
   <div class="wrap split">
     <div class="split__content">
-      <span class="sec-eyebrow">COTIZACIÓN DIRECTA</span>
-      <h2 class="sec-title">Solicite su propuesta técnica personalizada</h2>
-      <p class="sec-desc">Haga clic en el botón a continuación para abrir la ventana de cotización. Al diligenciar sus datos, la solicitud se estructurará y enviará directamente vía WhatsApp a nuestro equipo de ingeniería.</p>
+      <span class="sec-eyebrow" data-i18n="quote_sec_eyebrow">COTIZACIÓN DIRECTA</span>
+      <h2 class="sec-title" data-i18n="quote_sec_title">Solicite su propuesta técnica personalizada</h2>
+      <p class="sec-desc" data-i18n="quote_sec_desc">Haga clic en el botón a continuación para abrir la ventana de cotización. Al diligenciar sus datos, la solicitud se estructurará y enviará directamente vía WhatsApp a nuestro equipo de ingeniería.</p>
 
       <div class="form-contacts">
         <div class="fc-item">
-          <strong>Atención Comercial Directa:</strong>
+          <strong data-i18n="quote_fc1_label">Atención Comercial Directa:</strong>
           <span>comercial@incontechsas.com | (+57) 321 271 8824</span>
         </div>
         <div class="fc-item">
-          <strong>Coordinación de Laboratorio:</strong>
+          <strong data-i18n="quote_fc2_label">Coordinación de Laboratorio:</strong>
           <span>laboratorio@incontechsas.com | (+57) 301 709 6659</span>
         </div>
       </div>
@@ -630,11 +633,11 @@
         <div class="quote-trigger-card__icon">
           <svg viewBox="0 0 24 24"><path d="M3 21l1.6-4.6A8.5 8.5 0 1 1 8 19.6z"/></svg>
         </div>
-        <h3>Cotización Rápida por WhatsApp</h3>
-        <p>Complete sus datos en nuestra ventana emergente y envíe las especificaciones técnicas directamente a nuestro WhatsApp corporativo.</p>
+        <h3 data-i18n="quote_card_title">Cotización Rápida por WhatsApp</h3>
+        <p data-i18n="quote_card_desc">Complete sus datos en nuestra ventana emergente y envíe las especificaciones técnicas directamente a nuestro WhatsApp corporativo.</p>
         <button class="btn btn--primary btn--full open-quote-modal-btn" id="openQuoteModalBtn">
           <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;margin-right:8px"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-          Abrir Ventana de Cotización
+          <span data-i18n="quote_card_btn">Abrir Ventana de Cotización</span>
         </button>
       </div>
     </div>
@@ -645,44 +648,44 @@
 <section class="sec sec--light" id="contacto">
   <div class="wrap split">
     <div class="split__content">
-      <span class="sec-eyebrow">SEDE Y UBICACIÓN</span>
-      <h2 class="sec-title">Visítenos o contáctenos directamente</h2>
-      <p class="sec-desc">Sede principal y laboratorio equipados en la ciudad de Villavicencio, atendiendo proyectos en toda la Orinoquía y el país.</p>
+      <span class="sec-eyebrow" data-i18n="contact_eyebrow">SEDE Y UBICACIÓN</span>
+      <h2 class="sec-title" data-i18n="contact_title">Visítenos o contáctenos directamente</h2>
+      <p class="sec-desc" data-i18n="contact_desc">Sede principal y laboratorio equipados en la ciudad de Villavicencio, atendiendo proyectos en toda la Orinoquía y el país.</p>
 
       <div class="contact-card-box">
         <div class="cc-row">
           <svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
           <div>
-            <strong>Dirección de Sede:</strong>
-            <span>Carrera 28d N° 3b-08, Barrio El Palmar, Villavicencio - Meta.</span>
+            <strong data-i18n="contact_addr_label">Dirección de Sede:</strong>
+            <span data-i18n="contact_addr_txt">Carrera 28d N° 3b-08, Barrio El Palmar, Villavicencio - Meta.</span>
           </div>
         </div>
 
         <div class="cc-row">
           <svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
           <div>
-            <strong>Líneas Telefónicas:</strong>
-            <span>(+57) 321 271 8824 / (+57) 301 709 6659</span>
+            <strong data-i18n="contact_phone_label">Líneas Telefónicas:</strong>
+            <span data-i18n="contact_phone_txt">(+57) 321 271 8824 / (+57) 301 709 6659</span>
           </div>
         </div>
 
         <div class="cc-row">
           <svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           <div>
-            <strong>Correos Electrónicos:</strong>
+            <strong data-i18n="contact_email_label">Correos Electrónicos:</strong>
             <span>comercial@incontechsas.com<br>laboratorio@incontechsas.com</span>
           </div>
         </div>
       </div>
 
       <div class="contact-btns-group">
-        <a href="https://wa.me/573212718824?text=Hola%2C%20quisiera%20solicitar%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20laboratorio." target="_blank" rel="noopener" class="btn btn--whatsapp"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-4.6A8.5 8.5 0 1 1 8 19.6z"/></svg> Contactar por WhatsApp</a>
+        <a href="https://wa.me/573212718824?text=Hola%2C%20quisiera%20solicitar%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20laboratorio." target="_blank" rel="noopener" class="btn btn--whatsapp"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-4.6A8.5 8.5 0 1 1 8 19.6z"/></svg> <span data-i18n="contact_wa_btn">Contactar por WhatsApp</span></a>
       </div>
     </div>
 
     <div class="split__media">
       <div class="map-container">
-        <iframe title="Mapa de ubicación INCONTECH en Villavicencio" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Carrera+28d+3b-08+El+Palmar+Villavicencio&output=embed"></iframe>
+        <iframe title="Mapa de ubicación INCONTECH en Villavicencio" data-i18n-title="contact_map_title" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Carrera+28d+3b-08+El+Palmar+Villavicencio&output=embed"></iframe>
       </div>
     </div>
   </div>
@@ -697,36 +700,36 @@
         <img src="img/real/logo_trans.png" alt="Logo INCONTECH S.A.S." class="footer__logo-img">
         <span class="footer__logo-txt">INCONTECH<small>S.A.S.</small></span>
       </div>
-      <p class="footer__slogan">Haciendo la diferencia con excelencia en cada proyecto de infraestructura y construcción.</p>
-      <div class="footer__cert-tag">Firma Especializada en Laboratorio y Geofísica</div>
+      <p class="footer__slogan" data-i18n="foot_slogan">Haciendo la diferencia con excelencia en cada proyecto de infraestructura y construcción.</p>
+      <div class="footer__cert-tag" data-i18n="foot_cert_tag">Firma Especializada en Laboratorio y Geofísica</div>
     </div>
 
     <div class="footer__nav-col">
-      <h4>Nuestra Empresa</h4>
+      <h4 data-i18n="foot_col1_title">Nuestra Empresa</h4>
       <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#nosotros">Acerca de INCONTECH</a></li>
-        <li><a href="#proyectos">Proyectos Destacados</a></li>
-        <li><a href="#calidad">Sistema de Calidad</a></li>
-        <li><a href="#cotizar">Solicitar Cotización</a></li>
+        <li><a href="#inicio" data-i18n="nav_home">Inicio</a></li>
+        <li><a href="#nosotros" data-i18n="nav_about">Acerca de INCONTECH</a></li>
+        <li><a href="#proyectos" data-i18n="nav_projects">Proyectos Destacados</a></li>
+        <li><a href="#calidad" data-i18n="nav_quality">Sistema de Calidad</a></li>
+        <li><a href="#cotizar" data-i18n="nav_quote_btn">Solicitar Cotización</a></li>
       </ul>
     </div>
 
     <div class="footer__nav-col">
-      <h4>Servicios & Soluciones</h4>
+      <h4 data-i18n="foot_col2_title">Servicios & Soluciones</h4>
       <ul>
-        <li><a href="#laboratorios">Laboratorio de Suelos</a></li>
-        <li><a href="#laboratorios" data-tab="concretos">Laboratorio de Concretos</a></li>
-        <li><a href="#laboratorios" data-tab="pavimentos">Laboratorio de Pavimentos</a></li>
-        <li><a href="#geofisica">Geofísica Especializada</a></li>
-        <li><a href="#patologia">Patología Estructural</a></li>
-        <li><a href="#consultoria">Consultoría Geotécnica</a></li>
+        <li><a href="#laboratorios" data-i18n="dd_lab_suelos_title">Laboratorio de Suelos</a></li>
+        <li><a href="#laboratorios" data-tab="concretos" data-i18n="dd_lab_concretos_title">Laboratorio de Concretos</a></li>
+        <li><a href="#laboratorios" data-tab="pavimentos" data-i18n="dd_lab_pavimentos_title">Laboratorio de Pavimentos</a></li>
+        <li><a href="#geofisica" data-i18n="dd_geofisica_title">Geofísica Especializada</a></li>
+        <li><a href="#patologia" data-i18n="dd_patologia_title">Patología Estructural</a></li>
+        <li><a href="#consultoria" data-i18n="dd_consultoria_title">Consultoría Geotécnica</a></li>
       </ul>
     </div>
 
     <div class="footer__contact-col">
-      <h4>Contacto Principal</h4>
-      <p>Carrera 28d N° 3b-08, Barrio El Palmar<br>Villavicencio, Meta - Colombia</p>
+      <h4 data-i18n="foot_col3_title">Contacto Principal</h4>
+      <p data-i18n="foot_addr" data-i18n-html>Carrera 28d N° 3b-08, Barrio El Palmar<br>Villavicencio, Meta - Colombia</p>
       <p>Tel: (+57) 321 271 8824<br>Tel: (+57) 301 709 6659</p>
       <p>Email: comercial@incontechsas.com</p>
     </div>
@@ -734,11 +737,11 @@
 
   <div class="footer__bottom">
     <div class="wrap footer__bottom-in">
-      <span>© 2026 INCONTECH S.A.S. Todos los derechos reservados.</span>
+      <span data-i18n="foot_copyright">© 2026 INCONTECH S.A.S. Todos los derechos reservados.</span>
       <div class="footer__legal">
-        <a href="#">Política de Tratamiento de Datos</a>
-        <a href="#">Términos y Condiciones</a>
-        <a href="#">Mapa del Sitio</a>
+        <a href="#" data-i18n="foot_legal1">Política de Tratamiento de Datos</a>
+        <a href="#" data-i18n="foot_legal2">Términos y Condiciones</a>
+        <a href="#" data-i18n="foot_legal3">Mapa del Sitio</a>
       </div>
     </div>
   </div>
@@ -747,7 +750,7 @@
 <!-- FLOTANTES Y MODALES -->
 <a class="wa-fab" href="https://wa.me/573212718824" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M3 21l1.6-4.6A8.5 8.5 0 1 1 8 19.6z"/></svg>
-  <span>¿Necesitas Asesoría?</span>
+  <span data-i18n="wa_fab_label">¿Necesitas Asesoría?</span>
 </a>
 
 <button class="totop" id="totop" aria-label="Volver arriba">
@@ -770,70 +773,70 @@
   <div class="quote-modal__dialog">
     <div class="quote-modal__header">
       <div>
-        <span class="quote-modal__badge">INCONTECH S.A.S.</span>
-        <h3 class="quote-modal__title">Solicitud de Cotización en Línea</h3>
+        <span class="quote-modal__badge" data-i18n="modal_badge">INCONTECH S.A.S.</span>
+        <h3 class="quote-modal__title" data-i18n="modal_title">Solicitud de Cotización en Línea</h3>
       </div>
       <button class="quote-modal__close" id="closeQuoteModalBtn" aria-label="Cerrar ventana emergente">&times;</button>
     </div>
 
     <form id="modalQuoteForm" class="quote-modal__body corp-form">
-      <p class="quote-modal__sub">Diligencie los campos requeridos. Al enviar, sus datos se formatearán automáticamente para ser transmitidos vía WhatsApp al equipo de atención comercial.</p>
+      <p class="quote-modal__sub" data-i18n="modal_sub">Diligencie los campos requeridos. Al enviar, sus datos se formatearán automáticamente para ser transmitidos vía WhatsApp al equipo de atención comercial.</p>
 
       <div class="form-row">
         <div class="f-group">
-          <label for="m-nombre">Nombre Completo *</label>
-          <input id="m-nombre" name="nombre" placeholder="Ej. Ing. Carlos Restrepo" autocomplete="name" required>
+          <label for="m-nombre" data-i18n="lbl_nombre">Nombre Completo *</label>
+          <input id="m-nombre" name="nombre" placeholder="Ej. Ing. Carlos Restrepo" data-i18n-placeholder="ph_nombre" autocomplete="name" required>
         </div>
         <div class="f-group">
-          <label for="m-empresa">Empresa / Entidad</label>
-          <input id="m-empresa" name="empresa" placeholder="Ej. Constructora del Llano" autocomplete="organization">
+          <label for="m-empresa" data-i18n="lbl_empresa">Empresa / Entidad</label>
+          <input id="m-empresa" name="empresa" placeholder="Ej. Constructora del Llano" data-i18n-placeholder="ph_empresa" autocomplete="organization">
         </div>
       </div>
 
       <div class="form-row">
         <div class="f-group">
-          <label for="m-email">Correo Electrónico *</label>
-          <input id="m-email" name="email" type="email" placeholder="carlos@empresa.com" autocomplete="email" required>
+          <label for="m-email" data-i18n="lbl_email">Correo Electrónico *</label>
+          <input id="m-email" name="email" type="email" placeholder="carlos@empresa.com" data-i18n-placeholder="ph_email" autocomplete="email" required>
         </div>
         <div class="f-group">
-          <label for="m-telefono">Teléfono / WhatsApp *</label>
-          <input id="m-telefono" name="telefono" type="tel" placeholder="321 000 0000" autocomplete="tel" required>
+          <label for="m-telefono" data-i18n="lbl_telefono">Teléfono / WhatsApp *</label>
+          <input id="m-telefono" name="telefono" type="tel" placeholder="321 000 0000" data-i18n-placeholder="ph_telefono" autocomplete="tel" required>
         </div>
       </div>
 
       <div class="form-row">
         <div class="f-group">
-          <label for="m-ciudad">Ciudad / Ubicación del Proyecto *</label>
-          <input id="m-ciudad" name="ciudad" placeholder="Ej. Villavicencio, Meta" required>
+          <label for="m-ciudad" data-i18n="lbl_ciudad">Ciudad / Ubicación del Proyecto *</label>
+          <input id="m-ciudad" name="ciudad" placeholder="Ej. Villavicencio, Meta" data-i18n-placeholder="ph_ciudad" required>
         </div>
         <div class="f-group">
-          <label for="m-servicio">Servicio Requerido *</label>
+          <label for="m-servicio" data-i18n="lbl_servicio">Servicio Requerido *</label>
           <select id="m-servicio" name="servicio" required>
-            <option value="">Seleccione un servicio</option>
-            <option>Laboratorio de Suelos</option>
-            <option>Laboratorio de Concretos</option>
-            <option>Laboratorio de Pavimentos</option>
-            <option>Geofísica Especializada</option>
-            <option>Patología Estructural</option>
-            <option>Consultoría Geotécnica</option>
-            <option>Otro / Servicio Integral</option>
+            <option value="" data-i18n="opt_select_service">Seleccione un servicio</option>
+            <option data-i18n="srv_suelos">Laboratorio de Suelos</option>
+            <option data-i18n="srv_concretos">Laboratorio de Concretos</option>
+            <option data-i18n="srv_pavimentos">Laboratorio de Pavimentos</option>
+            <option data-i18n="srv_geofisica">Geofísica Especializada</option>
+            <option data-i18n="srv_patologia">Patología Estructural</option>
+            <option data-i18n="srv_consultoria">Consultoría Geotécnica</option>
+            <option data-i18n="srv_otro">Otro / Servicio Integral</option>
           </select>
         </div>
       </div>
 
       <div class="f-group f-group--full">
-        <label for="m-mensaje">Descripción Detallada del Requerimiento *</label>
-        <textarea id="m-mensaje" name="mensaje" rows="4" placeholder="Indique cantidad de muestras, normas específicas (INVIAS/ASTM) o detalles técnicos..." required></textarea>
+        <label for="m-mensaje" data-i18n="lbl_mensaje">Descripción Detallada del Requerimiento *</label>
+        <textarea id="m-mensaje" name="mensaje" rows="4" placeholder="Indique cantidad de muestras, normas específicas (INVIAS/ASTM) o detalles técnicos..." data-i18n-placeholder="ph_mensaje" required></textarea>
       </div>
 
       <div class="f-group f-group--full chk">
         <input id="m-acepto" name="acepto" type="checkbox" required>
-        <label for="m-acepto">Acepto la política de tratamiento de datos personales de INCONTECH S.A.S.</label>
+        <label for="m-acepto" data-i18n="lbl_acepto">Acepto la política de tratamiento de datos personales de INCONTECH S.A.S.</label>
       </div>
 
       <button class="btn btn--whatsapp btn--full" type="submit" id="modalSubmitBtn" style="font-size:16px;padding:14px;margin-top:8px">
         <svg viewBox="0 0 24 24" style="width:22px;height:22px;fill:currentColor;margin-right:8px"><path d="M3 21l1.6-4.6A8.5 8.5 0 1 1 8 19.6z"/></svg>
-        Enviar Cotización por WhatsApp
+        <span data-i18n="btn_modal_submit">Enviar Cotización por WhatsApp</span>
       </button>
     </form>
   </div>
