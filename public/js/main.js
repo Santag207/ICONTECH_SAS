@@ -7,9 +7,9 @@ const SERVICES = [
   ['Laboratorio de Suelos','Caracterización física y mecánica de suelos y materiales para apoyar estudios geotécnicos, diseño y control de proyectos de infraestructura.',['Límites de Atterberg','Granulometría','Compactación','Densidad','CBR','Caracterización de materiales'],'#laboratorios','img/real/lab-suelos.jpg','img/suelos.svg'],
   ['Laboratorio de Concretos','Evaluación de propiedades físicas y mecánicas del concreto y mortero para apoyar el control de calidad de los proyectos.',['Resistencia a compresión','Resistencia a flexión','Ensayos en cubos','Diseño de mezclas','Diseño de morteros'],'#laboratorios','img/real/lab-concretos.jpg','img/concretos.svg'],
   ['Laboratorio de Pavimentos','Caracterización y control de materiales y mezclas utilizadas en infraestructura vial.',['Marshall','Estabilidad y flujo','Gravedad específica','Densidad','Toma de briquetas'],'#laboratorios','img/real/lab-pavimentos.jpg','img/pavimentos.svg'],
-  ['Geofísica','Obtención de información complementaria sobre las condiciones del subsuelo mediante métodos de exploración geofísica.',['MASW','Refracción sísmica','Resistividad eléctrica','SEV'],'#geofisica','img/real/proj-castilla.jpg',null],
-  ['Patología estructural','Evaluación de elementos y estructuras mediante técnicas de inspección y ensayos orientados a identificar condiciones y características del material.',['Extracción de núcleos','Esclerometría','Determinación de refuerzo','Carbonatación','Regatas'],'#patologia','img/real/lab-concretos.jpg',null],
-  ['Consultoría','Estudios y diseños especializados para apoyar la planificación, evaluación y ejecución de proyectos de obras civiles.',['Estudios geotécnicos','Taludes','Topografía','Diseño de pavimentos','Diseño estructural','Vulnerabilidad sísmica'],'#consultoria','img/real/proj-puente.jpg',null]
+  ['Geofísica','Obtención de información complementaria sobre las condiciones del subsuelo mediante métodos de exploración geofísica.',['MASW','Refracción sísmica','Resistividad eléctrica','SEV'],'#geofisica','img/real/proj-castilla.jpg','img/geofisica.svg'],
+  ['Patología estructural','Evaluación de elementos y estructuras mediante técnicas de inspección y ensayos orientados a identificar condiciones y características del material.',['Extracción de núcleos','Esclerometría','Determinación de refuerzo','Carbonatación','Regatas'],'#patologia','img/real/lab-concretos.jpg','img/patologia.svg'],
+  ['Consultoría','Estudios y diseños especializados para apoyar la planificación, evaluación y ejecución de proyectos de obras civiles.',['Estudios geotécnicos','Taludes','Topografía','Diseño de pavimentos','Diseño estructural','Vulnerabilidad sísmica'],'#consultoria','img/real/proj-puente.jpg','img/consultoria.svg']
 ];
 
 const LABS = {
@@ -33,10 +33,13 @@ const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','
 
 /* ---- Render Cards de Servicios ---- */
 $('#cards').innerHTML = SERVICES.map((s,i) => `
-<article class="card">
+<article class="card" data-service="${esc(s[0])}" data-desc="${esc(s[1])}">
   <div class="card__media">
     <img src="${s[4]}" alt="Fotografía de ${esc(s[0])}" class="card__img-real" loading="lazy">
-    ${s[5] ? `<div class="card__svg-overlay"><img src="${s[5]}" alt="Diagrama técnico de ${esc(s[0])}"></div>` : ''}
+    <div class="card__svg-container">
+      <img src="${s[5]}" alt="Diagrama técnico de ${esc(s[0])}">
+      <span class="card__svg-tag">Esquema Técnico</span>
+    </div>
   </div>
   <div class="card__b">
     <span class="card__n">0${i+1}</span>
@@ -66,9 +69,9 @@ function showTab(k){
   <div class="tabpanel__visual">
     <div class="lab-photo-wrapper">
       <img class="lab-img lab-img--real" src="${l[4]}" alt="Fotografía de laboratorio real para ${esc(l[0])}" loading="lazy">
-      <div class="lab-svg-badge">
-        <img src="${l[5]}" alt="Esquema técnico SVG ${esc(l[0])}">
-        <span>Diagrama de ensayo</span>
+      <div class="lab-svg-container">
+        <img src="${l[5]}" alt="Esquema técnico ${esc(l[0])}">
+        <div class="lab-svg-badge">Diagrama Dinámico</div>
       </div>
     </div>
   </div>`;
@@ -228,4 +231,106 @@ function showLayer(i){
 }
 lw.addEventListener('click',e=>{const b=e.target.closest('button');if(b)showLayer(b.dataset.i)});
 showLayer(1);
+
+/* ---- Ventana Emergente Temporal / Floating Hover Popover ---- */
+const popover = document.createElement('div');
+popover.className = 'popover';
+popover.id = 'floatingPopover';
+popover.innerHTML = `
+  <div class="popover__header">
+    <img src="" alt="" class="popover__thumb" id="popThumb">
+    <div>
+      <span class="popover__badge" id="popBadge">INCONTECH</span>
+      <div class="popover__title" id="popTitle">Title</div>
+    </div>
+  </div>
+  <div class="popover__body" id="popBody">Body</div>
+  <div class="popover__status" id="popStatus">Calidad Certificada ONAC / ISO 17025</div>
+`;
+document.body.appendChild(popover);
+
+function showPopover(e, data) {
+  if (innerWidth < 768) return;
+  $('#popThumb').src = data.img || 'img/real/logo.png';
+  $('#popBadge').textContent = data.badge || 'ESPECIFICACIÓN TÉCNICA';
+  $('#popTitle').textContent = data.title;
+  $('#popBody').textContent = data.desc;
+  $('#popStatus').textContent = data.status || 'Equipos Calibrados ONAC · Trazabilidad';
+
+  popover.classList.add('visible');
+  positionPopover(e);
+}
+
+function positionPopover(e) {
+  const pad = 16;
+  let x = e.clientX + 20;
+  let y = e.clientY + 20;
+  if (x + 330 > innerWidth - pad) x = e.clientX - 340;
+  if (y + 190 > innerHeight - pad) y = e.clientY - 190;
+  popover.style.left = `${Math.max(pad, x)}px`;
+  popover.style.top = `${Math.max(pad, y)}px`;
+}
+
+function hidePopover() {
+  popover.classList.remove('visible');
+}
+
+document.addEventListener('mouseover', e => {
+  const card = e.target.closest('.card');
+  if (card && !card.contains(e.relatedTarget)) {
+    const sName = card.dataset.service;
+    const sDesc = card.dataset.desc;
+    const img = card.querySelector('.card__img-real')?.src;
+    showPopover(e, {
+      title: sName,
+      desc: sDesc,
+      img: img,
+      badge: 'SERVICIO ESPECIALIZADO',
+      status: 'Acreditación / Normas INVIAS & ACI'
+    });
+  }
+
+  const projCard = e.target.closest('.proj');
+  if (projCard && !projCard.contains(e.relatedTarget)) {
+    const pTitle = projCard.dataset.title;
+    const pDesc = projCard.dataset.desc;
+    const img = projCard.dataset.img;
+    const loc = projCard.dataset.loc;
+    showPopover(e, {
+      title: pTitle,
+      desc: `${loc} — ${pDesc}`,
+      img: img,
+      badge: 'PROYECTO REALIZADO',
+      status: 'Acompañamiento y control de calidad'
+    });
+  }
+
+  const btnLayer = e.target.closest('.layers button');
+  if (btnLayer && !btnLayer.contains(e.relatedTarget)) {
+    const idx = btnLayer.dataset.i;
+    const l = LAYERS[idx];
+    if (l) {
+      showPopover(e, {
+        title: `${l[0]} (${l[1]})`,
+        desc: l[4],
+        img: 'img/real/lab-suelos.jpg',
+        badge: 'ESTRATO GEOTÉCNICO',
+        status: `Ensayos: ${l[5].join(', ')}`
+      });
+    }
+  }
+});
+
+document.addEventListener('mousemove', e => {
+  if (popover.classList.contains('visible')) {
+    positionPopover(e);
+  }
+});
+
+document.addEventListener('mouseout', e => {
+  if (e.target.closest('.card, .proj, .layers button') && !e.relatedTarget?.closest('.card, .proj, .layers button')) {
+    hidePopover();
+  }
+});
+
 })();

@@ -118,13 +118,15 @@ p+p{margin-top:16px}
 
 /* Servicios / Cards */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:64px}
-.card{background:#fff;border:1px solid var(--line);border-top:4px solid var(--g);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .35s var(--e),box-shadow .35s var(--e);box-shadow:var(--shadow-sm)}
+.card{background:#fff;border:1px solid var(--line);border-top:4px solid var(--g);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .35s var(--e),box-shadow .35s var(--e);box-shadow:var(--shadow-sm);position:relative}
 .card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
-.card__media{position:relative;height:210px;width:100%;overflow:hidden;background:var(--l)}
+.card__media{position:relative;height:230px;width:100%;overflow:hidden;background:var(--l);display:grid;grid-template-columns:1fr 1fr}
 .card__img-real{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--e)}
-.card:hover .card__img-real{transform:scale(1.06)}
-.card__svg-overlay{position:absolute;right:12px;bottom:12px;width:64px;height:64px;background:rgba(255,255,255,0.92);backdrop-filter:blur(4px);border-radius:50%;padding:10px;box-shadow:var(--shadow-sm);border:1px solid var(--line);display:grid;place-items:center}
-.card__svg-overlay img{width:100%;height:100%;object-fit:contain}
+.card:hover .card__img-real{transform:scale(1.05)}
+.card__svg-container{width:100%;height:100%;background:#1d1916;display:flex;align-items:center;justify-content:center;padding:12px;position:relative;overflow:hidden;border-left:2px solid var(--line)}
+.card__svg-container img{width:100%;height:100%;object-fit:contain;transition:transform .5s var(--e)}
+.card:hover .card__svg-container img{transform:scale(1.08)}
+.card__svg-tag{position:absolute;bottom:8px;left:8px;background:rgba(0,0,0,0.75);color:#fff;font-size:10px;font-weight:800;padding:3px 8px;border-radius:4px;letter-spacing:.05em;text-transform:uppercase;backdrop-filter:blur(4px)}
 .card__b{padding:28px;display:flex;flex-direction:column;flex:1}
 .card__n{font-size:13px;font-weight:800;color:var(--ga);letter-spacing:.05em}
 .card h3{margin:8px 0 12px;font-size:22px;color:var(--ink)}
@@ -142,11 +144,11 @@ p+p{margin-top:16px}
 @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 .tabpanel ul{margin:20px 0 28px;display:grid;grid-template-columns:1fr 1fr;gap:10px 20px}
 .tabpanel li{padding:10px 14px;background:var(--bg);border-radius:6px;border-left:3px solid var(--g);font-weight:600;font-size:14.5px;color:var(--ink)}
-.lab-photo-wrapper{position:relative;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-md);border:1px solid var(--line)}
-.lab-img--real{width:100%;height:340px;object-fit:cover;display:block}
-.lab-svg-badge{position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.92);backdrop-filter:blur(6px);border-radius:8px;padding:8px 14px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow-sm);border:1px solid var(--line)}
-.lab-svg-badge img{width:36px;height:36px;object-fit:contain}
-.lab-svg-badge span{font-size:12px;font-weight:800;color:var(--ink);text-transform:uppercase;letter-spacing:.04em}
+.lab-photo-wrapper{position:relative;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-md);border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;background:#1d1916}
+.lab-img--real{width:100%;height:320px;object-fit:cover;display:block}
+.lab-svg-container{width:100%;height:320px;display:flex;align-items:center;justify-content:center;padding:16px;background:#1d1916;position:relative}
+.lab-svg-container img{width:100%;height:100%;object-fit:contain}
+.lab-svg-badge{position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.8);color:#fff;border-radius:6px;padding:6px 12px;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.2)}
 
 /* Geofísica */
 .dark{position:relative;overflow:hidden;background:linear-gradient(180deg,#211c18,#171310);color:#c9bfb3;padding:120px 0}
@@ -252,6 +254,18 @@ address{font-style:normal;margin-top:36px;display:grid;gap:18px}
 .modal__close{position:absolute;top:16px;right:16px;width:36px;height:36px;background:rgba(0,0,0,0.6);border:0;color:#fff;border-radius:50%;cursor:pointer;display:grid;place-items:center;font-size:20px;transition:background .2s}
 .modal__close:hover{background:rgba(0,0,0,0.9)}
 
+/* Ventana Emergente Temporal / Floating Hover Popover */
+.popover{position:fixed;z-index:120;pointer-events:none;opacity:0;visibility:hidden;transform:scale(0.92) translateY(10px);transition:opacity .22s var(--e),transform .22s var(--e),visibility .22s;background:rgba(27,21,17,0.96);backdrop-filter:blur(12px);color:#fff;border:1px solid rgba(255,255,255,0.22);border-radius:var(--r);padding:16px;width:320px;box-shadow:0 16px 40px rgba(0,0,0,0.4)}
+.popover.visible{opacity:1;visibility:visible;transform:scale(1) translateY(0)}
+.popover__header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.popover__thumb{width:52px;height:52px;border-radius:6px;object-fit:cover;border:1px solid rgba(255,255,255,0.3);flex:none;background:#2b221b}
+.popover__badge{font-size:10px;font-weight:800;text-transform:uppercase;background:var(--ga);color:#fff;padding:2px 8px;border-radius:4px;display:inline-block;letter-spacing:.05em;margin-bottom:3px}
+.popover__title{font-size:15px;font-weight:800;color:#fff;line-height:1.2}
+.popover__body{font-size:13px;color:#d8d0c6;line-height:1.45;margin-top:6px}
+.popover__status{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:#22c55e;margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.12);width:100%}
+.popover__status::before{content:"";width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e;animation:pulseDot 1.5s infinite}
+@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.3)}}
+
 /* Explorador de perfil estratigráfico */
 .explorer{display:grid;grid-template-columns:240px 1fr 340px;gap:48px;margin-top:56px;align-items:start}
 .layers{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-md)}
@@ -292,7 +306,9 @@ address{font-style:normal;margin-top:36px;display:grid;gap:18px}
 @media(max-width:768px){
  .topbar span:first-child{display:none}.topbar__in{justify-content:center}
  .sec{padding:80px 0}.proj{grid-template-columns:1fr}
- .cards,.diffs,.grid4,form{grid-template-columns:1fr;padding:24px}
+ .cards,.diffs,.grid4,form{grid-template-columns:1fr}
+ .card__media, .lab-photo-wrapper{grid-template-columns:1fr}
+ .card__svg-container, .lab-svg-container{height:180px}
  .steps{grid-template-columns:1fr;padding-left:8px}.steps::before{display:block;left:8px;top:0;width:2px;height:0;transition:height 2.2s var(--e)}.steps.in::before{width:2px;height:100%}
  .steps li{padding:0 0 0 38px}.steps li::before{left:0}
  .method li{font-size:24px}.method span{font-size:48px;min-width:70px}

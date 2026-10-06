@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#ede8e0"/>
+  <!-- Topographic grid & contour lines -->
+  <path d="M 30 220 C 120 180, 200 240, 370 160" fill="none" stroke="#b0814f" stroke-width="2.5"/>
+  <path d="M 30 180 C 120 140, 200 200, 370 120" fill="none" stroke="#6b4a2f" stroke-width="2"/>
+  <path d="M 30 140 C 120 100, 200 160, 370 80" fill="none" stroke="#8b5e3c" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <!-- Animated slope vector & design node -->
+  <circle cx="200" cy="170" r="8" fill="#6b4a2f">
+    <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <line x1="200" y1="170" x2="280" y2="120" stroke="#3a2819" stroke-width="3" marker-end="url(#arrow)">
+    <animate attributeName="stroke-dashoffset" values="0;20" dur="1s" repeatCount="indefinite"/>
+  </line>
+  <text x="40" y="278" font-family="Manrope, sans-serif" font-size="11" font-weight="700" fill="#6d655d">Consultoría &amp; Diseño Geotécnico / Estructural</text>
+</svg>
