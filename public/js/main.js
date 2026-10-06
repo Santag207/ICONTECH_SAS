@@ -9,13 +9,45 @@ function setupI18n() {
   if (!i18n) return;
   i18n.init();
 
-  const langButtons = $$('.topbar__lang-btn');
-  langButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  const langDropdown = $('#langDropdown');
+  const langTrigger = $('#langTrigger');
+  const langOptions = $$('.lang-dropdown__opt');
+
+  if (langTrigger && langDropdown) {
+    langTrigger.addEventListener('click', (e) => {
       e.preventDefault();
-      const lang = btn.getAttribute('data-lang');
+      e.stopPropagation();
+      const isOpen = langDropdown.classList.contains('open');
+      langDropdown.classList.toggle('open', !isOpen);
+      langTrigger.setAttribute('aria-expanded', !isOpen);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!langDropdown.contains(e.target)) {
+        langDropdown.classList.remove('open');
+        langTrigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && langDropdown.classList.contains('open')) {
+        langDropdown.classList.remove('open');
+        langTrigger.setAttribute('aria-expanded', 'false');
+        langTrigger.focus();
+      }
+    });
+  }
+
+  langOptions.forEach(opt => {
+    opt.addEventListener('click', (e) => {
+      e.preventDefault();
+      const lang = opt.getAttribute('data-lang');
       if (lang) {
         i18n.setLanguage(lang);
+        if (langDropdown) {
+          langDropdown.classList.remove('open');
+          if (langTrigger) langTrigger.setAttribute('aria-expanded', 'false');
+        }
       }
     });
   });
@@ -494,19 +526,20 @@ window.addEventListener('languageChanged', () => {
 });
 
 /* ---- Initial Page Load Setup ---- */
-document.addEventListener('DOMContentLoaded', () => {
+let initialized = false;
+function initApp() {
+  if (initialized) return;
+  initialized = true;
   setupI18n();
   showTab(currentTabKey);
   renderProjects();
   renderLayers();
-});
+}
 
-// Fallback in case DOMContentLoaded already fired before script execution
 if (document.readyState !== 'loading') {
-  setupI18n();
-  showTab(currentTabKey);
-  renderProjects();
-  renderLayers();
+  initApp();
+} else {
+  document.addEventListener('DOMContentLoaded', initApp);
 }
 
 })();

@@ -41,8 +41,18 @@ server.listen(8085, async () => {
   await page.screenshot({ path: '/home/jules/verification/screenshots/i18n_es.png' });
   console.log('Captured i18n_es.png');
 
-  // Switch to English
-  await page.click('button[data-lang="en"]');
+  // Click trigger to open dropdown
+  await page.click('#langTrigger');
+  await page.waitForTimeout(300);
+
+  const isOpen = await page.evaluate(() => document.getElementById('langDropdown').classList.contains('open'));
+  console.log('Dropdown open status:', isOpen);
+
+  await page.screenshot({ path: '/home/jules/verification/screenshots/lang_dropdown_open.png' });
+  console.log('Captured lang_dropdown_open.png');
+
+  // Click English option
+  await page.click('.lang-dropdown__opt[data-lang="en"]');
   await page.waitForTimeout(500);
 
   // Take screenshot in English
@@ -52,8 +62,10 @@ server.listen(8085, async () => {
   // Verify English text content in key sections
   const heroTitle = await page.textContent('h1.hero__title');
   const navSolutions = await page.textContent('span[data-i18n="nav_solutions"]');
+  const activeCode = await page.textContent('#langActiveCode');
   console.log('Hero Title (EN):', heroTitle);
   console.log('Nav Solutions (EN):', navSolutions);
+  console.log('Active Lang Code:', activeCode);
 
   await browser.close();
   server.close();

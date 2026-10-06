@@ -644,13 +644,24 @@ class I18nManager {
       }
     });
 
-    // Update language toggle buttons UI state
-    const langSwitchers = document.querySelectorAll('.topbar__lang-btn');
-    langSwitchers.forEach(btn => {
+    // Update language dropdown options UI state & active trigger display
+    const langOpts = document.querySelectorAll('.lang-dropdown__opt');
+    langOpts.forEach(btn => {
       const code = btn.getAttribute('data-lang');
       if (code === this.currentLang) {
         btn.classList.add('active');
         btn.setAttribute('aria-current', 'true');
+
+        const triggerFlag = document.getElementById('langActiveFlag');
+        const triggerCode = document.getElementById('langActiveCode');
+        const optFlag = btn.querySelector('.lang-dropdown__flag');
+
+        if (triggerFlag && optFlag) {
+          triggerFlag.innerHTML = optFlag.innerHTML;
+        }
+        if (triggerCode) {
+          triggerCode.textContent = code.toUpperCase();
+        }
       } else {
         btn.classList.remove('active');
         btn.removeAttribute('aria-current');

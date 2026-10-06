@@ -672,28 +672,128 @@ h4 { font-size: 18px; font-weight: 700; }
   stroke: currentColor;
   stroke-width: 2;
 }
-.topbar__lang {
+/* Language Dropdown Selector */
+.lang-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.lang-dropdown__trigger {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #E2E8F0;
+  border-radius: var(--radius-full);
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 700;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-main);
+  line-height: 1;
 }
-.topbar__lang-btn {
-  background: none;
+
+.lang-dropdown__trigger:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.lang-dropdown__flag {
+  width: 16px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  display: block;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.lang-dropdown__arrow {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  transition: transform 0.2s ease;
+}
+
+.lang-dropdown.open .lang-dropdown__arrow {
+  transform: rotate(180deg);
+}
+
+.lang-dropdown__menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  padding: 6px;
+  min-width: 130px;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: all 0.2s var(--ease-main);
+  z-index: 250;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.lang-dropdown.open .lang-dropdown__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-dropdown__opt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 10px;
+  background: transparent;
   border: none;
-  color: #94A3B8;
+  border-radius: var(--radius-sm);
+  color: var(--c-ink);
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  padding: 2px 4px;
-  border-radius: 3px;
-  transition: all 0.2s ease;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  text-align: left;
 }
-.topbar__lang-btn:hover {
-  color: #FFFFFF;
+
+.lang-dropdown__opt:hover {
+  background-color: var(--c-border-subtle);
+  color: var(--c-navy);
 }
-.topbar__lang-btn.active {
-  color: #FFFFFF;
-  background-color: var(--c-red-primary);
+
+.lang-dropdown__opt.active {
+  background-color: rgba(42, 107, 59, 0.1);
+  color: var(--c-navy);
+  font-weight: 700;
+}
+
+body.dark-mode .lang-dropdown__menu {
+  background-color: #2A241F;
+  border-color: #3D352E;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+body.dark-mode .lang-dropdown__opt {
+  color: #F5F2EE;
+}
+
+body.dark-mode .lang-dropdown__opt:hover {
+  background-color: #3D352E;
+  color: #52C46E;
+}
+
+body.dark-mode .lang-dropdown__opt.active {
+  background-color: rgba(42, 107, 59, 0.3);
+  color: #86EFAC;
 }
 
 /* Header Navbar CEMEX */
