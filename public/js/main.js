@@ -4,16 +4,16 @@ const $ = (s, c = document) => c.querySelector(s), $$ = (s, c = document) => [..
 
 /* ---- Datos de Servicios y Laboratorio ---- */
 const SERVICES = [
-  ['Laboratorio de Suelos','Caracterización física y mecánica de suelos y materiales para apoyar estudios geotécnicos, diseño y control de proyectos.',['Límites de Atterberg','Granulometría','Compactación','Densidad','CBR','Clasificación USCS / AASHTO'],'#laboratorios','img/real/suelos.jpg','img/suelos.svg'],
+  ['Laboratorio de Suelos','Caracterización física y mecánica de suelos y materiales para apoyar estudios geotécnicos, diseño y control de proyectos.',['Límites de Atterberg','Granulometría','Compactación','Densidad','CBR','Clasificación USCS / AASHTO'],'#laboratorios','img/real/lab-suelos.jpg','img/suelos.svg'],
   ['Laboratorio de Concretos','Evaluación de propiedades físicas y mecánicas del concreto y mortero para el control de calidad en obra.',['Resistencia a compresión','Resistencia a flexión','Cilindros y Vigas','Diseño de mezclas','Ensayos no destructivos'],'#laboratorios','img/real/lab-concretos.jpg','img/concretos.svg'],
   ['Laboratorio de Pavimentos','Caracterización y control de materiales y mezclas asfálticas para infraestructura vial.',['Marshall (Estabilidad y flujo)','Extracción de asfalto','Gravedad específica','Granulometría de agregados','Toma de briquetas'],'#laboratorios','img/real/lab-pavimentos.jpg','img/pavimentos.svg'],
-  ['Geofísica Especializada','Exploración indirecta no destructiva del subsuelo para perfiles sísmicos y tomografías eléctricas.',['Sismografía MASW (Vs30)','Refracción Sísmica','Resistividad Eléctrica (TRE)','SEV'],'#geofisica','img/real/geofisica.jpg','img/geofisica.svg'],
+  ['Geofísica Especializada','Exploración indirecta no destructiva del subsuelo para perfiles sísmicos y tomografías eléctricas.',['Sismografía MASW (Vs30)','Refracción Sísmica','Resistividad Eléctrica (TRE)','SEV'],'#geofisica','img/real/proj-fiscalia.jpg','img/geofisica.svg'],
   ['Patología Estructural','Auscultación y diagnóstico técnico en estructuras existentes de concreto y mampostería.',['Extracción de núcleos','Esclerometría','Pacometría (detector de acero)','Carbonatación'],'#patologia','img/real/lab-concretos.jpg','img/patologia.svg'],
-  ['Consultoría Geotécnica','Estudios y diseños de ingeniería civil para cimentaciones, estabilidad de taludes y estructuras viales.',['Estudios geotécnicos','Estabilidad de taludes','Diseño de pavimentos','Vulnerabilidad sísmica'],'#consultoria','img/real/campo.jpg','img/consultoria.svg']
+  ['Consultoría Geotécnica','Estudios y diseños de ingeniería civil para cimentaciones, estabilidad de taludes y estructuras viales.',['Estudios geotécnicos','Estabilidad de taludes','Diseño de pavimentos','Vulnerabilidad sísmica'],'#consultoria','img/real/proj-castilla.jpg','img/consultoria.svg']
 ];
 
 const LABS = {
-  suelos: ['Laboratorio de Suelos', 'Caracterizar el suelo es la base de todo proyecto seguro.', 'Analizamos la física y mecánica del subsuelo según normas INVIAS y ASTM para respaldar decisiones de ingeniería.', SERVICES[0][2], 'img/real/suelos.jpg', 'img/suelos.svg'],
+  suelos: ['Laboratorio de Suelos', 'Caracterizar el suelo es la base de todo proyecto seguro.', 'Analizamos la física y mecánica del subsuelo según normas INVIAS y ASTM para respaldar decisiones de ingeniería.', SERVICES[0][2], 'img/real/lab-suelos.jpg', 'img/suelos.svg'],
   concretos: ['Laboratorio de Concretos', 'Control de resistencia y calidad en cada vaciado.', 'Ensayos de rotura a compresión de cilindros, flexión de vigas y diseño de mezclas de concreto y mortero.', SERVICES[1][2], 'img/real/lab-concretos.jpg', 'img/concretos.svg'],
   pavimentos: ['Laboratorio de Pavimentos', 'Infraestructura vial duradera respaldada por ensayos.', 'Caracterización de mezclas asfálticas, agregados de cantera y control de calidad en obra vial.', SERVICES[2][2], 'img/real/lab-pavimentos.jpg', 'img/pavimentos.svg']
 };
@@ -266,26 +266,78 @@ document.addEventListener('mouseout', e => {
   }
 });
 
-/* ---- Form Submission Handler ---- */
-const form = $('#form'), ok = $('#ok');
-if (form) {
-  form.addEventListener('submit', async e => {
-    e.preventDefault();
-    const btn = $('#send');
-    if (btn) {
-      btn.disabled = true;
-      btn.textContent = 'Enviando Solicitud…';
-    }
+/* ---- Quote Modal & WhatsApp Submission Handler ---- */
+const quoteModal = $('#quoteModal');
+const closeQuoteModalBtn = $('#closeQuoteModalBtn');
+const modalQuoteForm = $('#modalQuoteForm');
 
-    // Simulación o envío a endpoint
-    setTimeout(() => {
-      if (ok) ok.hidden = false;
-      form.reset();
-      if (btn) {
-        btn.disabled = false;
-        btn.textContent = 'Enviar Solicitud de Cotización';
-      }
-    }, 800);
+function openQuoteModal() {
+  if (!quoteModal) return;
+  quoteModal.classList.add('open');
+  quoteModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeQuoteModal() {
+  if (!quoteModal) return;
+  quoteModal.classList.remove('open');
+  quoteModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('click', e => {
+  if (e.target.closest('.open-quote-modal-btn')) {
+    e.preventDefault();
+    openQuoteModal();
+  }
+});
+
+if (closeQuoteModalBtn) {
+  closeQuoteModalBtn.addEventListener('click', closeQuoteModal);
+}
+
+if (quoteModal) {
+  quoteModal.addEventListener('click', e => {
+    if (e.target === quoteModal) closeQuoteModal();
+  });
+  addEventListener('keydown', e => {
+    if (e.key === 'Escape' && quoteModal.classList.contains('open')) closeQuoteModal();
+  });
+}
+
+if (modalQuoteForm) {
+  modalQuoteForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const nombre = $('#m-nombre')?.value.trim() || '';
+    const empresa = $('#m-empresa')?.value.trim() || 'No especificada';
+    const email = $('#m-email')?.value.trim() || '';
+    const telefono = $('#m-telefono')?.value.trim() || '';
+    const ciudad = $('#m-ciudad')?.value.trim() || '';
+    const servicio = $('#m-servicio')?.value || 'General';
+    const mensaje = $('#m-mensaje')?.value.trim() || '';
+
+    const text =
+`*NUEVA SOLICITUD DE COTIZACIÓN - INCONTECH S.A.S.*
+------------------------------------------------
+👤 *Nombre:* ${nombre}
+🏢 *Empresa:* ${empresa}
+📧 *Correo:* ${email}
+📱 *Teléfono:* ${telefono}
+📍 *Ubicación del Proyecto:* ${ciudad}
+🛠️ *Servicio Requerido:* ${servicio}
+
+📝 *Descripción / Requerimiento:*
+${mensaje}
+
+------------------------------------------------
+_Mensaje generado automáticamente desde incontechsas.com_`;
+
+    const waUrl = `https://wa.me/573212718824?text=${encodeURIComponent(text)}`;
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
+
+    closeQuoteModal();
+    modalQuoteForm.reset();
   });
 }
 

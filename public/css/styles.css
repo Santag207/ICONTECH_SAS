@@ -1218,6 +1218,23 @@ h4 { font-size: 18px; font-weight: 700; }
   flex-direction: column;
   gap: 6px;
 }
+.f-group.chk {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.f-group.chk input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  cursor: pointer;
+}
+.f-group.chk label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--c-body);
+  cursor: pointer;
+}
 .f-group--full {
   margin-bottom: 20px;
 }
@@ -1454,6 +1471,121 @@ h4 { font-size: 18px; font-weight: 700; }
   stroke: var(--c-navy-dark);
   fill: none;
   stroke-width: 2.2;
+}
+
+/* QUOTE TRIGGER CARD & MODAL POPUP */
+.quote-trigger-card {
+  background: var(--bg-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  padding: 36px 28px;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.quote-trigger-card__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(37, 211, 102, 0.12);
+  color: #25D366;
+  display: grid;
+  place-items: center;
+  margin-bottom: 20px;
+}
+.quote-trigger-card__icon svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+}
+.quote-trigger-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: var(--c-navy-dark);
+}
+.quote-trigger-card p {
+  font-size: 14.5px;
+  color: var(--c-body);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.quote-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 350;
+  background: rgba(11, 19, 32, 0.82);
+  backdrop-filter: blur(6px);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-main);
+  overflow-y: auto;
+}
+.quote-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.quote-modal__dialog {
+  background: var(--bg-white);
+  border-radius: var(--radius-md);
+  width: 100%;
+  max-width: 680px;
+  border: 1px solid var(--c-border);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transform: translateY(20px) scale(0.96);
+  transition: transform 0.3s var(--ease-main);
+}
+.quote-modal.open .quote-modal__dialog {
+  transform: translateY(0) scale(1);
+}
+.quote-modal__header {
+  background: var(--c-navy-dark);
+  color: #FFFFFF;
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.quote-modal__badge {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--c-gold);
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 4px;
+}
+.quote-modal__title {
+  color: #FFFFFF;
+  font-size: 20px;
+}
+.quote-modal__close {
+  background: none;
+  border: none;
+  color: #94A3B8;
+  font-size: 28px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+.quote-modal__close:hover {
+  color: #FFFFFF;
+}
+.quote-modal__body {
+  padding: 32px;
+  border: none;
+  box-shadow: none;
+}
+.quote-modal__sub {
+  font-size: 14px;
+  color: var(--c-body);
+  margin-bottom: 20px;
+  line-height: 1.5;
 }
 
 /* POPOVER HOVER & LIGHTBOX MODAL */
