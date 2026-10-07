@@ -880,6 +880,9 @@ body.dark-mode .lang-dropdown__opt.active {
   align-items: center;
   gap: 28px;
 }
+.menu__mobile-tools {
+  display: none;
+}
 .menu__link {
   font-size: 13.5px;
   font-weight: 600;
