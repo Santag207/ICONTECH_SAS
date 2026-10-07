@@ -652,16 +652,17 @@ class I18nManager {
         btn.classList.add('active');
         btn.setAttribute('aria-current', 'true');
 
-        const triggerFlag = document.getElementById('langActiveFlag');
-        const triggerCode = document.getElementById('langActiveCode');
         const optFlag = btn.querySelector('.lang-dropdown__flag');
-
-        if (triggerFlag && optFlag) {
-          triggerFlag.innerHTML = optFlag.innerHTML;
-        }
-        if (triggerCode) {
-          triggerCode.textContent = code.toUpperCase();
-        }
+        document.querySelectorAll('.lang-dropdown').forEach(dd => {
+          const triggerFlag = dd.querySelector('.lang-dropdown__trigger .lang-dropdown__flag');
+          const triggerCode = dd.querySelector('.lang-dropdown__trigger span:not(.lang-dropdown__code)');
+          if (triggerFlag && optFlag) {
+            triggerFlag.innerHTML = optFlag.innerHTML;
+          }
+          if (triggerCode) {
+            triggerCode.textContent = code.toUpperCase();
+          }
+        });
       } else {
         btn.classList.remove('active');
         btn.removeAttribute('aria-current');
