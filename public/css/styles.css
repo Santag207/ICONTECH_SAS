@@ -386,6 +386,9 @@ body.dark-mode .ok {
     background-color: #111827;
     border-left: 1px solid #374151;
   }
+  body.dark-mode .dd__panel {
+    border-left-color: #4ADE80;
+  }
 }
 
 /* Reset Global */
@@ -806,11 +809,27 @@ body.dark-mode .lang-dropdown__opt.active {
   color: #4ADE80;
 }
 
+/* Overlay Backdrop Mobile */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 24, 39, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: 150;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s var(--ease-main);
+}
+.overlay.on {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 /* Header Navbar CEMEX (Limpio, Bordes Finos) */
 .nav {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 200;
   background-color: var(--bg-white);
   height: 72px;
   border-bottom: 1px solid var(--c-border);
@@ -2226,17 +2245,100 @@ body.dark-mode .lang-dropdown__opt.active {
     top: 72px;
     right: 0;
     bottom: 0;
-    width: 280px;
+    width: 320px;
+    max-width: 85vw;
     background: var(--bg-white);
     flex-direction: column;
-    padding: 28px;
-    gap: 14px;
+    align-items: stretch;
+    padding: 24px 20px 36px;
+    gap: 12px;
     box-shadow: var(--shadow-lg);
     transform: translateX(100%);
     transition: transform 0.25s var(--ease-main);
+    overflow-y: auto;
+    z-index: 200;
   }
   .menu.open {
     transform: translateX(0);
+  }
+
+  /* Mobile tools (Theme & Language) inside drawer */
+  .menu__mobile-tools {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--c-border);
+  }
+  .menu__mobile-tools .theme-toggle {
+    background: var(--bg-gray);
+    border: 1px solid var(--c-border);
+    color: var(--c-ink);
+  }
+  .menu__mobile-tools .lang-dropdown__trigger {
+    background: var(--bg-gray);
+    border: 1px solid var(--c-border);
+    color: var(--c-ink);
+  }
+  body.dark-mode .menu__mobile-tools {
+    border-bottom-color: #374151;
+  }
+  body.dark-mode .menu__mobile-tools .theme-toggle,
+  body.dark-mode .menu__mobile-tools .lang-dropdown__trigger {
+    background: #1F2937;
+    border-color: #374151;
+    color: #F9FAFB;
+  }
+
+  /* Subdesplegables Accordion Mobile & Tablet */
+  .dd {
+    width: 100%;
+  }
+  .dd__btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .dd__arrow {
+    transition: transform 0.25s var(--ease-main);
+  }
+  .dd.open .dd__arrow {
+    transform: rotate(180deg);
+  }
+  .dd__panel {
+    position: static;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: none;
+    box-shadow: none;
+    background: transparent;
+    border: none;
+    border-left: 2px solid var(--c-navy);
+    padding: 0 0 0 12px;
+    margin: 0;
+    transition: max-height 0.3s ease, opacity 0.25s ease, margin 0.25s ease, padding 0.25s ease;
+  }
+  .dd:hover .dd__panel,
+  .dd:focus-within .dd__panel {
+    opacity: 0;
+    visibility: hidden;
+    transform: none;
+  }
+  .dd.open .dd__panel {
+    opacity: 1;
+    visibility: visible;
+    max-height: 800px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 4px 0 4px 12px;
+  }
+  .dd__item {
+    padding: 8px 10px;
   }
 }
 

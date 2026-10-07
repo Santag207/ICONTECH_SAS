@@ -71,6 +71,34 @@
     </a>
 
     <nav aria-label="Navegación principal" class="menu" id="menu">
+      <div class="menu__mobile-tools">
+        <button class="theme-toggle" aria-label="Cambiar tema claro/oscuro" title="Cambiar a Modo Oscuro/Claro">
+          <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <span class="theme-toggle__text" data-i18n="topbar_dark_mode">Modo Oscuro</span>
+        </button>
+
+        <div class="lang-dropdown">
+          <button type="button" class="lang-dropdown__trigger" aria-expanded="false" aria-haspopup="true">
+            <svg class="lang-dropdown__flag" viewBox="0 0 640 480" width="18" height="13.5"><rect width="640" height="480" fill="#ce1126"/><rect width="640" height="240" fill="#fcd116"/><rect width="640" height="120" y="240" fill="#003893"/></svg>
+            <span>ES</span>
+            <svg class="lang-dropdown__arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-dropdown__menu" role="menu">
+            <button type="button" class="lang-dropdown__opt active" data-lang="es" role="menuitem">
+              <svg class="lang-dropdown__flag" viewBox="0 0 640 480" width="18" height="13.5"><rect width="640" height="480" fill="#ce1126"/><rect width="640" height="240" fill="#fcd116"/><rect width="640" height="120" y="240" fill="#003893"/></svg>
+              <span>Español</span>
+              <span class="lang-dropdown__code">ES</span>
+            </button>
+            <button type="button" class="lang-dropdown__opt" data-lang="en" role="menuitem">
+              <svg class="lang-dropdown__flag" viewBox="0 0 640 480" width="18" height="13.5"><rect width="640" height="480" fill="#bb133e"/><path d="M0 36.9h640v36.9H0zm0 73.8h640v36.9H0zm0 73.8h640v36.9H0zm0 73.8h640v36.9H0zm0 73.8h640v36.9H0zm0 73.8h640v36.9H0z" fill="#fff"/><rect width="256" height="258.5" fill="#002147"/></svg>
+              <span>English</span>
+              <span class="lang-dropdown__code">EN</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
       <a href="#inicio" class="menu__link active" data-i18n="nav_home">Inicio</a>
       <a href="#nosotros" class="menu__link" data-i18n="nav_about">Acerca de</a>
       <div class="dd">

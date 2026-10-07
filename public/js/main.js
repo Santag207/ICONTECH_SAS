@@ -9,34 +9,48 @@ function setupI18n() {
   if (!i18n) return;
   i18n.init();
 
-  const langDropdown = $('#langDropdown');
-  const langTrigger = $('#langTrigger');
+  const langDropdowns = $$('.lang-dropdown');
   const langOptions = $$('.lang-dropdown__opt');
 
-  if (langTrigger && langDropdown) {
-    langTrigger.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const isOpen = langDropdown.classList.contains('open');
-      langDropdown.classList.toggle('open', !isOpen);
-      langTrigger.setAttribute('aria-expanded', !isOpen);
-    });
+  langDropdowns.forEach(dd => {
+    const trigger = $('.lang-dropdown__trigger', dd);
+    if (trigger) {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const isOpen = dd.classList.contains('open');
+        // Close other dropdowns
+        langDropdowns.forEach(d => {
+          d.classList.remove('open');
+          $('.lang-dropdown__trigger', d)?.setAttribute('aria-expanded', 'false');
+        });
+        dd.classList.toggle('open', !isOpen);
+        trigger.setAttribute('aria-expanded', !isOpen);
+      });
+    }
+  });
 
-    document.addEventListener('click', (e) => {
-      if (!langDropdown.contains(e.target)) {
-        langDropdown.classList.remove('open');
-        langTrigger.setAttribute('aria-expanded', 'false');
+  document.addEventListener('click', (e) => {
+    langDropdowns.forEach(dd => {
+      if (!dd.contains(e.target)) {
+        dd.classList.remove('open');
+        $('.lang-dropdown__trigger', dd)?.setAttribute('aria-expanded', 'false');
       }
     });
+  });
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && langDropdown.classList.contains('open')) {
-        langDropdown.classList.remove('open');
-        langTrigger.setAttribute('aria-expanded', 'false');
-        langTrigger.focus();
-      }
-    });
-  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      langDropdowns.forEach(dd => {
+        if (dd.classList.contains('open')) {
+          dd.classList.remove('open');
+          const trigger = $('.lang-dropdown__trigger', dd);
+          trigger?.setAttribute('aria-expanded', 'false');
+          trigger?.focus();
+        }
+      });
+    }
+  });
 
   langOptions.forEach(opt => {
     opt.addEventListener('click', (e) => {
@@ -44,25 +58,27 @@ function setupI18n() {
       const lang = opt.getAttribute('data-lang');
       if (lang) {
         i18n.setLanguage(lang);
-        if (langDropdown) {
-          langDropdown.classList.remove('open');
-          if (langTrigger) langTrigger.setAttribute('aria-expanded', 'false');
-        }
+        langDropdowns.forEach(dd => {
+          dd.classList.remove('open');
+          $('.lang-dropdown__trigger', dd)?.setAttribute('aria-expanded', 'false');
+        });
       }
     });
   });
 }
 
 /* ---- Dark / Light Theme Mode Switcher ---- */
-const themeToggleBtn = $('#themeToggleBtn');
-const themeToggleText = $('.theme-toggle__text', themeToggleBtn);
+const themeToggleBtns = $$('.theme-toggle');
 
 function applyTheme(isDark) {
   document.body.classList.toggle('dark-mode', isDark);
-  if (themeToggleText && i18n) {
-    const key = isDark ? 'topbar_light_mode' : 'topbar_dark_mode';
-    themeToggleText.textContent = i18n.t(key, isDark ? 'Modo Claro' : 'Modo Oscuro');
-  }
+  themeToggleBtns.forEach(btn => {
+    const txt = $('.theme-toggle__text', btn);
+    if (txt && i18n) {
+      const key = isDark ? 'topbar_light_mode' : 'topbar_dark_mode';
+      txt.textContent = i18n.t(key, isDark ? 'Modo Claro' : 'Modo Oscuro');
+    }
+  });
 }
 
 const savedTheme = localStorage.getItem('theme');
@@ -70,13 +86,13 @@ const initialDark = savedTheme === 'dark';
 
 applyTheme(initialDark);
 
-if (themeToggleBtn) {
-  themeToggleBtn.addEventListener('click', () => {
+themeToggleBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
     const isDark = !document.body.classList.contains('dark-mode');
     applyTheme(isDark);
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   });
-}
+});
 
 /* ---- Dynamic Data Structures for Multi-language Support ---- */
 const SERVICES_DATA = {
